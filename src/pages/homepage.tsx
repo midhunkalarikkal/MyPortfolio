@@ -117,15 +117,7 @@ export const HomePage: React.FC = () => {
 
                         <Image
                             src="/portfolioBg.jpg"
-                            className="w-full h-screen relative hidden md:block"
-                            alt="BackgroundImage"
-                            width={1000}
-                            height={1000}
-                        />
-
-                        <Image
-                            src="/portfoilioPhoneBg.jpg"
-                            className="w-full h-screen relative block md:hidden"
+                            className="w-full h-screen relative object-cover repeat-0 object-top-right"
                             alt="BackgroundImage"
                             width={1000}
                             height={1000}
