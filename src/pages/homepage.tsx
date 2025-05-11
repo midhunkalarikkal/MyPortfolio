@@ -1,14 +1,29 @@
 "use client";
 
-import gsap from "gsap";
+import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-// import "remixicon/fonts/remixicon.css";
+import { useEffect, useRef, useState } from "react";
+import { designationArray, gsapFromHomePageMainObject, gsapSetHomePageMainObject, logoLinks, navLinks } from "@/utils/constants";
+import { CodeXml, Facebook, Github, Instagram, Linkedin, MenuIcon, TwitterIcon } from "lucide-react";
+
+const iconMap = {
+    Linkedin: <Linkedin />,
+    Github: <Github />,
+    CodeXml: <CodeXml />,
+    TwitterIcon: <TwitterIcon />,
+    Facebook: <Facebook />,
+    Instagram: <Instagram />,
+};
 
 export const HomePage: React.FC = () => {
 
     const [showContent, setShowContent] = useState(false);
+    const [designation, setDesignation] = useState(designationArray[0]);
+
+    const midhunIntroImageRef = useRef(null);
+    const introTextDivRef = useRef(null);
 
     useGSAP(() => {
         const tl = gsap.timeline();
@@ -83,21 +98,26 @@ export const HomePage: React.FC = () => {
             ease: "Expo.easeInOut",
         });
 
-        const main = document.querySelector(".main");
-        main?.addEventListener("mousemove", function (e: Event) {
-            const mouseEvent = e as MouseEvent;
-            const xMove = (mouseEvent.clientX / window.innerWidth - 0.5) * 40;
-            gsap.to(".main .text", {
-                x: `${xMove * 0.4}%`,
-            });
-            gsap.to(".sky", {
-                x: xMove,
-            });
-            gsap.to(".bg", {
-                x: xMove * 1.7,
-            });
-        });
+        gsap.set(midhunIntroImageRef.current, gsapSetHomePageMainObject);
+
+        gsap.from(midhunIntroImageRef.current, gsapFromHomePageMainObject);
+
+        gsap.set(introTextDivRef.current, gsapSetHomePageMainObject);
+
+        gsap.from(introTextDivRef.current, gsapFromHomePageMainObject);
+
     }, [showContent]);
+
+    useEffect(() => {
+        let index = 0;
+        const interval = setInterval(() => {
+            index = (index + 1) % designationArray.length;
+            setDesignation(designationArray[index])
+        }, 3000);
+
+        return () => clearInterval(interval);
+
+    }, [])
 
     return (
         <>
@@ -122,7 +142,7 @@ export const HomePage: React.FC = () => {
                         </mask>
                     </defs>
                     <image
-                        href="./midhunBg.jpg"
+                        href="./LoadingBg.png"
                         width="100%"
                         height="100%"
                         preserveAspectRatio="xMidYMid slice"
@@ -132,9 +152,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {showContent && (
-                <div className="main w-full rotate-[-10deg] scale-[1.7]">
+                <div className="main w-full scale-[1.7]">
                     <div className="landing overflow-hidden relative w-full h-screen bg-black flex">
+
                         {/* backgoround image */}
+
                         <Image
                             src="/portfolioBg.jpg"
                             className="w-full h-screen relative"
@@ -142,21 +164,53 @@ export const HomePage: React.FC = () => {
                             width={1000}
                             height={1000}
                         />
-                        <div className="w-full h-full flex justify-center items-center absolute">
+
+                        <div className="w-full h-screen flex justify-center items-center absolute">
                             <div className="w-8/12 flex h-full">
+
                                 {/* left side */}
-                                <div className="flex flex-col text-white w-1/2 h-full justify-center items-center">
-                                    <h1 className="text-6xl">Midhun K Paniker</h1>
-                                    <div className="mt-2">
-                                        <h2 className="text-3xl">MERN Stack Developer</h2>
-                                        <h2 className="text-3xl">Software Engineer</h2>
+                                <div className="flex items-center justify-center w-1/2 h-full text-white">
+                                    <div className="w-full" ref={introTextDivRef}>
+                                        <h1 className="text-5xl font-['audiowide']"> Midhun K Paniker </h1>
+                                        <h2>
+                                            {"I'm a passionate"}{" "}
+                                            <span className="font-['audiowide'] text-[#18d26e] text-2xl">{designation}</span> from Kerala
+                                        </h2>
+
+                                        <nav id="navbar" className="mt-4">
+                                            <ul className="flex gap-4 text-md">
+                                                {navLinks.map((link, index) => (
+                                                    <li key={index}><Link className="nav-link" href="#header">{link}</Link></li>
+                                                ))}
+                                            </ul>
+                                            <MenuIcon className="text-2xl mt-2 cursor-pointer md:hidden" />
+                                        </nav>
+
+                                        <div className="social-links flex gap-6 mt-4 text-2xl">
+                                            {logoLinks.map((link, index) => (
+                                                <Link
+                                                    key={index}
+                                                    href={link.href}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="hover:text-[#18d26e] transition-colors duration-200"
+                                                    aria-label={link.target}
+                                                >
+                                                    {iconMap[link.icon]}
+                                                </Link>
+                                            ))}
+                                        </div>
                                     </div>
                                 </div>
 
 
                                 {/* right side */}
                                 <div className="flex justify-center items-center w-1/2 h-full">
-                                    <div className="w-full h-auto">
+                                    <div
+                                        id="into-image"
+                                        className="w-full h-auto"
+                                        ref={midhunIntroImageRef}
+                                    >
                                         <Image
                                             src="/midhunIntro.png"
                                             alt="Image"
@@ -166,18 +220,10 @@ export const HomePage: React.FC = () => {
                                         />
                                     </div>
                                 </div>
+
                             </div>
                         </div>
 
-                    </div>
-                    <div className="w-full h-screen">
-                        <Image
-                            src="/portfolioBg.jpg"
-                            className="w-full h-screen relative"
-                            alt="BackgroundImage"
-                            width={1000}
-                            height={1000}
-                        />
                     </div>
                 </div>
             )}
