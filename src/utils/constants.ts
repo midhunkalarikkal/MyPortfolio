@@ -37,3 +37,27 @@ export const gsapFromHomePageMainObject = {
     y: -50,
     ease: Power3.easeOut,
 }
+
+export const gsapToNameMaskGroupFirstObject = {
+    rotate: 0,
+    duration: 2,
+    ease: "Power4.easeInOut",
+    transformOrigin: "50% 50%",
+}
+
+export const gsapToNameMaskGroupSecondObject = {
+    scale: 10,
+    duration: 2,
+    delay: -1.8,
+    ease: "Expo.easeInOut",
+    transformOrigin: "50% 50%",
+    opacity: 0,
+}
+
+export const gsapToMainObject = {
+    scale: 1,
+    rotate: 0,
+    duration: 2,
+    delay: -1,
+    ease: "Expo.easeInOut",
+}

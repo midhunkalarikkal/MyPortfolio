@@ -1,12 +1,12 @@
 "use client";
 
+import gsap from "gsap";
 import Link from "next/link";
 import Image from "next/image";
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef, useState } from "react";
-import { designationArray, gsapFromHomePageMainObject, gsapSetHomePageMainObject, logoLinks, navLinks } from "@/utils/constants";
-import { CodeXml, Facebook, Github, Instagram, Linkedin, MenuIcon, TwitterIcon } from "lucide-react";
+import { CodeXml, Facebook, Github, Instagram, Linkedin, TwitterIcon } from "lucide-react";
+import { designationArray, gsapFromHomePageMainObject, gsapSetHomePageMainObject, gsapToMainObject, gsapToNameMaskGroupFirstObject, gsapToNameMaskGroupSecondObject, logoLinks, navLinks } from "@/utils/constants";
 
 const iconMap = {
     Linkedin: <Linkedin />,
@@ -28,82 +28,29 @@ export const HomePage: React.FC = () => {
     useGSAP(() => {
         const tl = gsap.timeline();
 
-        tl.to(".vi-mask-group", {
-            rotate: 0,
-            duration: 2,
-            ease: "Power4.easeInOut",
-            transformOrigin: "50% 50%",
-        }).to(".vi-mask-group", {
-            scale: 10,
-            duration: 2,
-            delay: -1.8,
-            ease: "Expo.easeInOut",
-            transformOrigin: "50% 50%",
-            opacity: 0,
-            onUpdate: function () {
-                if (this.progress() >= 0.9) {
-                    const svgElement = document.querySelector(".svg");
-                    if (svgElement) {
-                        svgElement.remove();
+        tl.to(".name-mask-group", gsapToNameMaskGroupFirstObject)
+            .to(".name-mask-group", {
+                ...gsapToNameMaskGroupSecondObject,
+                onUpdate: function () {
+                    if (this.progress() >= 0.9) {
+                        const svgElement = document.querySelector(".svg");
+                        if (svgElement) {
+                            svgElement.remove();
+                        }
+                        setShowContent(true);
+                        this.kill();
                     }
-                    setShowContent(true);
-                    this.kill();
-                }
-            },
-        });
+                },
+            });
     });
 
     useGSAP(() => {
         if (!showContent) return;
 
-        gsap.to(".main", {
-            scale: 1,
-            rotate: 0,
-            duration: 2,
-            delay: -1,
-            ease: "Expo.easeInOut",
-        });
-
-        gsap.to(".sky", {
-            scale: 1.1,
-            rotate: 0,
-            duration: 2,
-            delay: -0.8,
-            ease: "Expo.easeInOut",
-        });
-
-        gsap.to(".bg", {
-            scale: 1.1,
-            rotate: 0,
-            duration: 2,
-            delay: -0.8,
-            ease: "Expo.easeInOut",
-        });
-
-        gsap.to(".character", {
-            scale: 1.4,
-            x: "-50%",
-            bottom: "-25%",
-            rotate: 0,
-            duration: 2,
-            delay: -0.8,
-            ease: "Expo.easeInOut",
-        });
-
-        gsap.to(".text", {
-            scale: 1,
-            rotate: 0,
-            duration: 2,
-            delay: -0.8,
-            ease: "Expo.easeInOut",
-        });
-
+        gsap.to(".main", gsapToMainObject);
         gsap.set(midhunIntroImageRef.current, gsapSetHomePageMainObject);
-
         gsap.from(midhunIntroImageRef.current, gsapFromHomePageMainObject);
-
         gsap.set(introTextDivRef.current, gsapSetHomePageMainObject);
-
         gsap.from(introTextDivRef.current, gsapFromHomePageMainObject);
 
     }, [showContent]);
@@ -116,7 +63,6 @@ export const HomePage: React.FC = () => {
         }, 3000);
 
         return () => clearInterval(interval);
-
     }, [])
 
     return (
@@ -126,7 +72,7 @@ export const HomePage: React.FC = () => {
                     <defs>
                         <mask id="viMask">
                             <rect width="100%" height="100%" fill="black" />
-                            <g className="vi-mask-group">
+                            <g className="name-mask-group">
                                 <text
                                     x="50%"
                                     y="50%"
@@ -135,6 +81,9 @@ export const HomePage: React.FC = () => {
                                     fill="white"
                                     dominantBaseline="middle"
                                     fontFamily="Arial Black"
+                                    stroke="#18d26e"
+                                    strokeWidth="0"
+                                    paintOrder="stroke"
                                 >
                                     MIDHUN K PANIKER
                                 </text>
@@ -147,6 +96,15 @@ export const HomePage: React.FC = () => {
                         height="100%"
                         preserveAspectRatio="xMidYMid slice"
                         mask="url(#viMask)"
+                        className="hidden md:block"
+                    />
+                    <image
+                        href="./LoadingPhoneBg.png"
+                        width="100%"
+                        height="100%"
+                        preserveAspectRatio="xMidYMid slice"
+                        mask="url(#viMask)"
+                        className="block md:hidden"
                     />
                 </svg>
             </div>
@@ -159,34 +117,58 @@ export const HomePage: React.FC = () => {
 
                         <Image
                             src="/portfolioBg.jpg"
-                            className="w-full h-screen relative"
+                            className="w-full h-screen relative hidden md:block"
+                            alt="BackgroundImage"
+                            width={1000}
+                            height={1000}
+                        />
+
+                        <Image
+                            src="/portfoilioPhoneBg.jpg"
+                            className="w-full h-screen relative block md:hidden"
                             alt="BackgroundImage"
                             width={1000}
                             height={1000}
                         />
 
                         <div className="w-full h-screen flex justify-center items-center absolute">
-                            <div className="w-8/12 flex h-full">
+                            <div className="w-full md:w-8/12 flex flex-col md:flex-row h-full">
+
+                                {/* my top image for small screens */}
+                                <div className="md:hidden flex items-end w-full h-1/2">
+                                    <div
+                                        id="into-image"
+                                        className="w-full h-auto flex justify-center"
+                                        ref={midhunIntroImageRef}
+                                    >
+                                        <Image
+                                            src="/midhunIntro.png"
+                                            alt="Image"
+                                            className="w-8/12 h-full"
+                                            width={1000}
+                                            height={1000}
+                                        />
+                                    </div>
+                                </div>
 
                                 {/* left side */}
-                                <div className="flex items-center justify-center w-1/2 h-full text-white">
-                                    <div className="w-full" ref={introTextDivRef}>
-                                        <h1 className="text-5xl font-['audiowide']"> Midhun K Paniker </h1>
+                                <div className="flex items-start mt-6 md:mt-0 md:items-center justify-center w-full md:w-1/2 h-1/2 md:h-full text-white">
+                                    <div className="w-full text-center md:text-left px-2 md:px-0" ref={introTextDivRef}>
+                                        <h1 className="text-3xl md:text-5xl font-['audiowide']"> Midhun K Paniker </h1>
                                         <h2>
                                             {"I'm a passionate"}{" "}
-                                            <span className="font-['audiowide'] text-[#18d26e] text-2xl">{designation}</span> from Kerala
+                                            <span className="font-['audiowide'] text-[#18d26e] text-lg md:text-2xl">{designation}</span> from Kerala
                                         </h2>
 
                                         <nav id="navbar" className="mt-4">
-                                            <ul className="flex gap-4 text-md">
+                                            <ul className="flex justify-around md:justify-start text-md">
                                                 {navLinks.map((link, index) => (
                                                     <li key={index}><Link className="nav-link" href="#header">{link}</Link></li>
                                                 ))}
                                             </ul>
-                                            <MenuIcon className="text-2xl mt-2 cursor-pointer md:hidden" />
                                         </nav>
 
-                                        <div className="social-links flex gap-6 mt-4 text-2xl">
+                                        <div className="social-links flex gap-6 mt-4 text-2xl justify-center md:justify-start">
                                             {logoLinks.map((link, index) => (
                                                 <Link
                                                     key={index}
@@ -205,7 +187,7 @@ export const HomePage: React.FC = () => {
 
 
                                 {/* right side */}
-                                <div className="flex justify-center items-center w-1/2 h-full">
+                                <div className="hidden md:flex justify-center items-center w-1/2 h-full">
                                     <div
                                         id="into-image"
                                         className="w-full h-auto"
