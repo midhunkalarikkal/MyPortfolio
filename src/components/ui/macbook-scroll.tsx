@@ -91,7 +91,7 @@ export const MacbookScroll = ({
         translate={translate}
       />
       {/* Base area */}
-      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
+      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-[#272729] dark:bg-[#272729]">
         {/* above keyboard bar */}
         <div className="relative h-10 w-full">
           <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
@@ -170,6 +170,16 @@ export const Lid = ({
           width={1000}
           height={1000}
         />
+
+        {/* <iframe
+        src={"https://midhunkalarikkal.github.io/portfoliowebsite/" as string}
+        title="aceternity content"
+        className="absolute inset-0 h-[100%] w-[100%] rounded-lg"
+        width="1000"
+        height="1000"
+        frameBorder="0"
+        allowFullScreen
+      ></iframe> */}
       </motion.div>
     </div>
   );
