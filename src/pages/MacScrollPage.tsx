@@ -3,7 +3,7 @@ import React from "react";
 
 export const MacScrollPage: React.FC = () => {
     return (
-    <div className="overflow-hidden dark:bg-[#0B0B0F] bg-white w-full">
+    <div className="overflow-hidden bg-[#0B0B0F] w-full">
       <MacbookScroll
         title={
           <span>

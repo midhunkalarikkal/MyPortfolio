@@ -67,14 +67,14 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="flex min-h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80 bg-[#13171a]"
+      className="flex h-auto md:h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80"
     >
       <motion.h2
         style={{
           translateY: textTransform,
           opacity: textOpacity,
         }}
-        className="mb-20 text-center text-3xl font-bold text-neutral-800 dark:text-white"
+        className="mb-20 text-center text-3xl font-bold text-white"
       >
         {title || (
           <span>
@@ -82,6 +82,7 @@ export const MacbookScroll = ({
           </span>
         )}
       </motion.h2>
+
       {/* Lid */}
       <Lid
         src={src}
@@ -90,8 +91,9 @@ export const MacbookScroll = ({
         rotate={rotate}
         translate={translate}
       />
+      
       {/* Base area */}
-      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-[#272729] dark:bg-[#272729]">
+      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-[#272729]">
         {/* above keyboard bar */}
         <div className="relative h-10 w-full">
           <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
@@ -110,7 +112,7 @@ export const MacbookScroll = ({
         <Trackpad />
         <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-tl-3xl rounded-tr-3xl bg-gradient-to-t from-[#272729] to-[#050505]" />
         {showGradient && (
-          <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black"></div>
+          <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t to-transparent from-black via-black"></div>
         )}
       </div>
     </div>
@@ -180,6 +182,7 @@ export const Lid = ({
         frameBorder="0"
         allowFullScreen
       ></iframe> */}
+      
       </motion.div>
     </div>
   );
@@ -351,10 +354,10 @@ export const Keypad = () => {
           <span className="block">Y</span>
         </KBtn>
         <KBtn>
-          <span className="block">U</span>
+          <span className="block text-green-400">U</span>
         </KBtn>
         <KBtn>
-          <span className="block">I</span>
+          <span className="block text-green-400">I</span>
         </KBtn>
         <KBtn>
           <span className="block">O</span>
@@ -391,7 +394,7 @@ export const Keypad = () => {
           <span className="block">S</span>
         </KBtn>
         <KBtn>
-          <span className="block">D</span>
+          <span className="block text-green-400">D</span>
         </KBtn>
         <KBtn>
           <span className="block">F</span>
@@ -400,7 +403,7 @@ export const Keypad = () => {
           <span className="block">G</span>
         </KBtn>
         <KBtn>
-          <span className="block">H</span>
+          <span className="block text-green-400">H</span>
         </KBtn>
         <KBtn>
           <span className="block">J</span>
@@ -451,10 +454,10 @@ export const Keypad = () => {
           <span className="block">B</span>
         </KBtn>
         <KBtn>
-          <span className="block">N</span>
+          <span className="block text-green-400">N</span>
         </KBtn>
         <KBtn>
-          <span className="block">M</span>
+          <span className="block text-green-400">M</span>
         </KBtn>
         <KBtn>
           <span className="block">{`<`}</span>
