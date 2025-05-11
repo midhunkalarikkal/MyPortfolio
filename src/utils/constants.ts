@@ -5,7 +5,6 @@ export const designationArray: string[] = [
     "Full Stack Developer",
     "MERN Stack Developer",
     "Software Engineer",
-    "Gamer",
 ]
 
 // Home page navlinks

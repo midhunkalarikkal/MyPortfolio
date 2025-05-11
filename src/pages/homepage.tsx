@@ -161,7 +161,7 @@ export const HomePage: React.FC = () => {
                                         </h2>
 
                                         <nav id="navbar" className="mt-4">
-                                            <ul className="flex justify-around md:justify-start text-md">
+                                            <ul className="flex justify-around md:justify-start md:gap-4 text-md">
                                                 {navLinks.map((link, index) => (
                                                     <li key={index}><Link className="nav-link" href="#header">{link}</Link></li>
                                                 ))}

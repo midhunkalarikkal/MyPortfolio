@@ -23,6 +23,9 @@ const audioWide = Audiowide({
 export const metadata = {
   title: 'Midhun K Paniker',
   description: 'midhun k paniker portfolio website',
+  icons: {
+    icon: "/midhun.jpg"
+  }
 }
 
 export default function RootLayout({
