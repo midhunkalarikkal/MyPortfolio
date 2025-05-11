@@ -23,7 +23,8 @@ import { IconWorld } from "@tabler/icons-react";
 import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
-import Image from "next/image";
+// import Image from "next/image";
+import { ConnectForm } from "@/pages/ConnectForm";
 
 
 export const MacbookScroll = ({
@@ -67,7 +68,7 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="flex h-auto md:h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80"
+      className="flex h-auto md:h-[200vh] shrink-0 scale-[0.35] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-40"
     >
       <motion.h2
         style={{
@@ -124,7 +125,7 @@ export const Lid = ({
   scaleY,
   rotate,
   translate,
-  src,
+  // src,
 }: {
   scaleX: MotionValue<number>;
   scaleY: MotionValue<number>;
@@ -165,13 +166,14 @@ export const Lid = ({
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <Image
+        <ConnectForm />
+        {/* <Image
           src={src as string}
           alt="aceternity logo"
           className="absolute inset-0 h-full w-full rounded-lg object-cover"
           width={1000}
           height={1000}
-        />
+        /> */}
 
         {/* <iframe
         src={"https://midhunkalarikkal.github.io/portfoliowebsite/" as string}

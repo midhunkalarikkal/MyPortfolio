@@ -7,9 +7,9 @@ export default function home() {
     return (
         <>
             <HomePage />
-            <MacScrollPage />
             <EducationPage />
             <SkillsPage />
+            <MacScrollPage />
         </>
     )
 }
