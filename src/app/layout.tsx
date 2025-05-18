@@ -1,4 +1,5 @@
 import './globals.css';
+        
 
 import { Orbitron, Poppins, Audiowide } from 'next/font/google';
 
@@ -35,7 +36,10 @@ export default function RootLayout({
 }) {
   return (
    <html lang="en" className={`${orbitron.variable} ${poppins.variable} ${audioWide.variable}`}>
-      <body className="font-['poppins'] bg-neutral-950">{children}</body>
+    <head>
+      <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    </head>
+      <body className="font-['poppins'] bg-neutral-950 relative min-h-screen">{children}</body>
     </html>
   )
 }

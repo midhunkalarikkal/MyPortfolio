@@ -26,7 +26,7 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start 10%", "end 50%"],
+    offset: ["start 30%", "end 50%"],
   });
 
   const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
@@ -34,19 +34,16 @@ export const Timeline = ({ data }: { data: TimelineEntry[] }) => {
 
   return (
     <div
-      className="w-full bg-neutral-950 font-sans md:px-10"
+      className="w-[77%] mx-auto"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-lg md:text-4xl mb-4 text-white max-w-4xl">
+      <div className="mx-auto py-6 px-4 md:px-8 lg:px-10 mt-6">
+        <h2 className="text-lg md:text-4xl mb-4 text-white">
           Education
         </h2>
-        <p className="text-neutral-300 text-sm md:text-base">
-          {"As a passionate computer enthusiast, I’ve always been fascinated by how games and applications work beneath the surface. This curiosity to explore the inner workings of software and understand the technology powering interactive experiences naturally led me to pursue a path in Computer Science. My academic journey has been driven by a desire to not just use technology, but to truly understand, build, and innovate within it—especially in areas that blend creativity and logic, like game development and application design."}
-        </p>
       </div>
 
-      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+      <div ref={ref} className="relative mx-auto pb-20">
         {data.map((item, index) => (
           <div
             key={index}
