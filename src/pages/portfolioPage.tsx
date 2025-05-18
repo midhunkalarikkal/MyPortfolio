@@ -1,6 +1,9 @@
+import { Heading } from "@/components/Heading"
 
 export const PortfolioPage = () => {
   return (
-    <div className="text-white h-screen bg-orange-200">PortfolioPage</div>
+    <div className="text-white h-screen">
+      <Heading title="Portfoilio" />
+    </div>
   )
 }

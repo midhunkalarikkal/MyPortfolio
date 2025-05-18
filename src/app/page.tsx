@@ -1,18 +1,23 @@
 import { HomePage } from "@/pages/homepage";
+import { StatsPage } from "@/pages/statsPage";
+import { SkillsPage } from "@/pages/skillsPage";
 import { EducationPage } from "@/pages/educationPage";
 import { MacScrollPage } from "@/pages/macScrollPage";
-import { PortfolioPage } from "@/pages/portfolioPage";
-import { TracingBeamDemo } from "@/pages/TracingBeamDemo";
+import { TracingBeam } from "@/components/ui/tracing-beam";
+// import { PortfolioPage } from "@/pages/portfolioPage";
 
 
 export default function home() {
     return (
         <>
             <HomePage />
-            <TracingBeamDemo />
-            <EducationPage />
-            <PortfolioPage />
-            <MacScrollPage />
+            <TracingBeam className="h-auto max-w-6xl" >
+                <SkillsPage />
+                <EducationPage />
+                {/* <PortfolioPage /> */}
+                <StatsPage />
+                <MacScrollPage />
+            </TracingBeam>
         </>
     )
 }

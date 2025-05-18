@@ -1,37 +1,28 @@
 "use client";
+
 import React from "react";
-import { TracingBeam } from "../components/ui/tracing-beam";
 import Image from "next/image";
 
-export function TracingBeamDemo() {
+export function SkillsPage() {
   return (
-    <>
-      <div className="w-full pt-10">
-        <div className="w-[77%] mx-auto px-4 md:px-8 lg:px-10 mt-6">
-          <h2 className="text-lg md:text-4xl mb-4 text-white">
-            Skills
-          </h2>
+
+    <div className="text-white mx-auto antialiased pt-4 relative py-20">
+      <h2 className="text-lg md:text-4xl text-white my-10">
+        Skills
+      </h2>
+      {skillsContent.map((item, index) => (
+        <div key={`content-${index}`} className="mb-10">
+          <p className="text-xl mb-4">{item.title}</p>
+          <div className="">
+            {item.description}
+          </div>
         </div>
-      </div>
+      ))}
+    </div>
 
-      <TracingBeam className="h-auto max-w-6xl">
-        <div className="text-white w-[90%] mx-auto antialiased pt-4 relative py-20">
-          {skillsContent.map((item, index) => (
-            <div key={`content-${index}`} className="mb-10">
-
-              <p className="text-xl mb-4">{item.title}</p>
-
-              <div className="">
-                {item.description}
-              </div>
-
-            </div>
-          ))}
-        </div>
-      </TracingBeam>
-    </>
   );
 }
+
 
 
 // Interface for Skill Item
@@ -47,7 +38,7 @@ const languages: SkillItem[] = [
   { label: "C", image: <i className="devicon-c-plain colored"></i> },
   { label: "PostgreSQL", image: <i className="devicon-postgresql-plain colored"></i> },
   { label: "HTML5", image: <i className="devicon-html5-plain colored"></i> },
-  { label: "(S)CSS", image: <i className="devicon-css3-plain colored"></i> }, // Corrected class name
+  { label: "(S)CSS", image: <i className="devicon-css3-plain colored"></i> },
 ];
 
 const libraries: SkillItem[] = [
@@ -79,20 +70,20 @@ const designTools: SkillItem[] = [
 ];
 
 const stateManagement: SkillItem[] = [
-  { label: 'Context API', image: <Image src="/contextapilogo.png" alt="contextapi" width={1000} height={1000} className="w-4 h-4" /> }, // Placeholder
+  { label: 'Context API', image: <Image src="/contextapilogo.png" alt="contextapi" width={1000} height={1000} className="w-4 h-4" /> },
   { label: 'Redux', image: <i className="devicon-redux-plain colored"></i> },
-  { label: 'Zustand', image: <Image src="/zustandlogo.png" alt="zustand" width={1000} height={1000} className="w-4 h-4" /> },  // Placeholder
+  { label: 'Zustand', image: <Image src="/zustandlogo.png" alt="zustand" width={1000} height={1000} className="w-4 h-4" /> },
 ];
 
 const concepts: SkillItem[] = [
-  { label: 'MVC Architecture', image: <Image src="/mvcarchitecturelogo.png" alt="mvcarchitecture" width={1000} height={1000} className="w-4 h-4" /> }, // Placeholder
-  { label: 'Waterfall Model', image: <Image src="/waterfallmodellogo.png" alt="waterfallmodel" width={1000} height={1000} className="w-4 h-4 invert" /> }, // Placeholder
-  { label: 'SOLID Principles', image: <Image src="/solidprincipleslogo.png" alt="solidprinciples" width={1000} height={1000} className="w-4 h-4" /> },  // Placeholder
+  { label: 'MVC Architecture', image: <Image src="/mvcarchitecturelogo.png" alt="mvcarchitecture" width={1000} height={1000} className="w-4 h-4" /> },
+  { label: 'Waterfall Model', image: <Image src="/waterfallmodellogo.png" alt="waterfallmodel" width={1000} height={1000} className="w-4 h-4 invert" /> },
+  { label: 'SOLID Principles', image: <Image src="/solidprincipleslogo.png" alt="solidprinciples" width={1000} height={1000} className="w-4 h-4" /> },
 ];
 
 const pursuing: SkillItem[] = [
-  { label: 'Microservices', image: <Image src="/microservicelogo.png" alt="microservice" width={1000} height={1000} className="w-4 h-4 invert" /> }, // Placeholder
-  { label: 'WebRTC', image: <Image src="/webrtclogo.png" alt="webrtc" width={1000} height={1000} className="w-4 h-4" /> }, // Placeholder
+  { label: 'Microservices', image: <Image src="/microservicelogo.png" alt="microservice" width={1000} height={1000} className="w-4 h-4 invert" /> },
+  { label: 'WebRTC', image: <Image src="/webrtclogo.png" alt="webrtc" width={1000} height={1000} className="w-4 h-4" /> },
 ];
 
 const skillsContent = [
@@ -108,7 +99,6 @@ const skillsContent = [
         ))}
       </ul>
     ),
-    badge: "Languages"
   },
   {
     title: "Libraries & Frameworks",
@@ -122,7 +112,6 @@ const skillsContent = [
         ))}
       </ul>
     ),
-    badge: "Libraries & Frameworks"
   },
   {
     title: "Tools & Platforms",
@@ -136,7 +125,6 @@ const skillsContent = [
         ))}
       </ul>
     ),
-    badge: "Tools & Platforms"
   },
   {
     title: "Design & Prototyping",
@@ -150,7 +138,6 @@ const skillsContent = [
         ))}
       </ul>
     ),
-    badge: "Design & Prototyping"
   },
   {
     title: "State Management & Architecture",
@@ -164,7 +151,6 @@ const skillsContent = [
         ))}
       </ul>
     ),
-    badge: "State Management & Architecture"
   },
   {
     title: "Concepts & Models",
@@ -178,7 +164,6 @@ const skillsContent = [
         ))}
       </ul>
     ),
-    badge: "Concepts & Models"
   },
   {
     title: "Currently Pursuing",
@@ -192,6 +177,5 @@ const skillsContent = [
         ))}
       </ul>
     ),
-    badge: "Currently Pursuing"
   }
 ];

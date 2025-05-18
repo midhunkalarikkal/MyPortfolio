@@ -23,6 +23,10 @@ export const logoLinks: { href: string; target: string; icon: IconKey }[] = [
     { href: "https://instagram.com/midhun_kalarikkal__?igshid=OGQ5ZDc2ODk2ZA==", target: "Instagram", icon: "Instagram" },
 ];
 
+
+
+
+
 // GSPA animation objects
 
 export const gsapSetHomePageMainObject = {
@@ -60,3 +64,13 @@ export const gsapToMainObject = {
     delay: -1,
     ease: "Expo.easeInOut",
 }
+
+
+
+
+
+// **** Stats page github and leetcode urls **** \\
+export const gihubStatsUrl: string = `https://github-readme-stats.vercel.app/api?username=midhunkalarikkal&show_icons=true&title_color=34d399&text_color=ffffff&icon_color=34d399&bg_color=000000&hide_border=true`;
+export const leetcodeStatsLink: string = `https://leetcard.jacoblin.cool/midhunkpaniker?theme=dark&font=Karla&ext=heatmap`;
+export const githubTrophiesStatsLink: string = "https://github-profile-trophy.vercel.app/?username=midhunkalarikkal&theme=darkhub&no-frame=true";
+export const githubContributionTilesLink: string = "https://ghchart.rshah.org/18d26e/midhunkalarikkal";

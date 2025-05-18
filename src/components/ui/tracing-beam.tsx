@@ -1,7 +1,7 @@
 "use client";
+import { cn } from "@/lib/utils";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useTransform, useScroll, useSpring } from "motion/react";
-import { cn } from "@/lib/utils";
 
 export const TracingBeam = ({
   children,
@@ -10,10 +10,12 @@ export const TracingBeam = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+
+  const recontainerReff = useRef<HTMLDivElement>(null);
+
   const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 40%", "end start"],
+    target: recontainerReff,
+    offset: ["start 10%", "end start"],
   });
 
   const contentRef = useRef<HTMLDivElement>(null);
@@ -39,23 +41,23 @@ export const TracingBeam = ({
   }, []);
 
   const y1 = useSpring(
-    useTransform(scrollYProgress, [0, 0.5], [0, svgHeight]),
+    useTransform(scrollYProgress, [0, 0.8], [50, svgHeight]),
     {
       stiffness: 500,
-      damping: 50,
+      damping: 90,
     },
   );
   const y2 = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, svgHeight - 200]),
+    useTransform(scrollYProgress, [0, 1], [50, svgHeight - 200]),
     {
       stiffness: 500,
-      damping: 50,
+      damping: 90,
     },
   );
 
   return (
     <motion.div
-      ref={ref}
+      ref={recontainerReff}
       className={cn("relative mx-auto h-full w-full", className)}
     >
       <div className="absolute top-3 -left-4 md:-left-20">
@@ -92,14 +94,14 @@ export const TracingBeam = ({
           aria-hidden="true"
         >
           <motion.path
-            d={`M 1 0 V -36 l 18 24 V ${svgHeight * 0.2} l -18 24 V ${svgHeight * 0.5} l 18 24 V ${svgHeight}`}
+            d={`M 1 0 V -36 l 18 24 V ${svgHeight * 0.18} l -18 24 V ${svgHeight * 0.4} l 18 24 V ${svgHeight}`}
             fill="none"
             stroke="#9091A0"
             strokeOpacity="0.16"
             transition={{ duration: 2, ease: "linear" }}
           ></motion.path>
           <motion.path
-            d={`M 1 0 V -36 l 18 24 V ${svgHeight * 0.2} l -18 24 V ${svgHeight * 0.5} l 18 24 V ${svgHeight}`}
+            d={`M 1 0 V -36 l 18 24 V ${svgHeight * 0.18} l -18 24 V ${svgHeight * 0.4} l 18 24 V ${svgHeight}`}
             fill="none"
             stroke="url(#gradient)"
             strokeWidth="2"
