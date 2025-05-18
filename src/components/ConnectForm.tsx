@@ -4,9 +4,6 @@ import { Send } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
-
-
-
 export const ConnectForm = () => {
 
     const [inputValue, setInputValue] = useState('');
@@ -31,6 +28,9 @@ export const ConnectForm = () => {
             />
 
             <div className="absolute flex flex-col gap-2 items-center bg-white p-3 rounded-md shadow-md w-64">
+                <div className='p-4'>
+                    <h1 className='text-md font-bold'>Connect me</h1>
+                </div>
                 <input
                     type="email"
                     value={inputValue}
@@ -46,9 +46,9 @@ export const ConnectForm = () => {
                 />
                 <button
                     type="submit"
-                    className="mt-1 border border-green-400 rounded-md px-3 py-[2px] text-green-500 hover:bg-green-50 transition text-xs flex items-center gap-1 cursor-pointer"
+                    className="mt-1 border border-green-400 rounded-md px-3 py-[1px] text-green-500 hover:bg-green-50 transition text-xs flex items-center gap-1 cursor-pointer"
                 >
-                    <Send className="size-3.5" />
+                    <Send className="size-3" />
                     Send
                 </button>
             </div>

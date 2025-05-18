@@ -4,8 +4,16 @@ export const SkillsPage = () => {
     const itemStyle = 'inline-block text-white px-4 py-2 m-1 rounded shadow bg-gray-800';
 
     return (
-        <div className="w-full px-4">
-            <div className="w-full">
+        <div className="w-full px-4 bg-neutral-950">
+            <div className="max-w-7xl mx-auto py-10 px-4 md:px-8 lg:px-10">
+                <h2 className="text-lg md:text-4xl mb-4 text-white max-w-4xl">
+                    Skills
+                </h2>
+            </div>
+
+            
+
+            <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-10">
                 <h5 className={sectionStyle}>Languages</h5>
                 <ul>
                     {['JavaScript', 'TypeScript', 'MongoDB', 'C', 'PostgreSQL', 'HTML5', '(S)CSS'].map((lang) => (
@@ -50,18 +58,13 @@ export const SkillsPage = () => {
 
                 <h5 className={sectionStyle}>Currently Pursuing</h5>
                 <ul>
-                    {[
-                        { name: 'NestJS', hidden: true },
-                        { name: 'Microservices', hidden: true },
-                        { name: 'Clean Architecture', hidden: false },
-                        { name: 'Socket.io', hidden: false },
-                        { name: 'WebRTC', hidden: true },
-                    ].map(({ name, hidden }) => (
+                    {["NestJS", "Microservices", "Clean Architecture", "Socket.io", "WebRTC"
+                    ].map((item) => (
                         <li
-                            key={name}
-                            className={`${itemStyle} ${hidden ? 'hidden' : ''}`}
+                            key={item}
+                            className={itemStyle}
                         >
-                            {name}
+                            {item}
                         </li>
                     ))}
                 </ul>

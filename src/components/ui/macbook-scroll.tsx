@@ -24,7 +24,7 @@ import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
 // import Image from "next/image";
-import { ConnectForm } from "@/pages/ConnectForm";
+import { ConnectForm } from "@/components/ConnectForm";
 
 
 export const MacbookScroll = ({

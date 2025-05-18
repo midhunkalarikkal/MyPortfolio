@@ -35,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
    <html lang="en" className={`${orbitron.variable} ${poppins.variable} ${audioWide.variable}`}>
-      <body className="font-['poppins']">{children}</body>
+      <body className="font-['poppins'] bg-neutral-950">{children}</body>
     </html>
   )
 }

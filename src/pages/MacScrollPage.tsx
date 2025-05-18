@@ -1,5 +1,5 @@
-import { MacbookScroll } from "@/components/ui/macbook-scroll";
 import React from "react";
+import { MacbookScroll } from "@/components/ui/macbook-scroll";
 
 export const MacScrollPage: React.FC = () => {
     return (
@@ -8,7 +8,7 @@ export const MacScrollPage: React.FC = () => {
         title={
           <>
           <span> Thank You For Your Visit</span> <br />
-          <p className="text-lg mt-2 text-green-400">Connect with me</p>
+          <p className="text-lg mt-2 text-green-400">Connect me</p>
           </>
 
         }
