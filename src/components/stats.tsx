@@ -2,17 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 interface StatsComponent {
-    url: string;
-    width: string | number;
-    height: string | number;
-    title: string;
+  url: string;
+  title: string;
 }
 
 export const Stats: React.FC<StatsComponent> = ({
-    url,
-    width,
-    height,
-    title
+  url,
+  title
 }) => {
   const [loading, setLoading] = useState(true);
   const [iframeUrl, setIframeUrl] = useState("");
@@ -20,7 +16,7 @@ export const Stats: React.FC<StatsComponent> = ({
   useEffect(() => {
     const fetchedData = url
     setIframeUrl(fetchedData);
-  }, []); 
+  }, []);
 
   return (
     <div className="my-2">
@@ -30,17 +26,15 @@ export const Stats: React.FC<StatsComponent> = ({
 
       {iframeUrl && (
         <>
-        <h1 className="text-xl text-white mb-4 font-semibold">{title}</h1>
-        <iframe
-          src={iframeUrl}
-          onLoad={() => setLoading(false)}
-          className={`rounded-lg transition-opacity duration-300 w-auto${
-            loading ? "opacity-0" : "opacity-100"
-          }`}
-          width={width}
-          height={height}
+          <h1 className="text-xl text-white mb-4 font-semibold">{title}</h1>
+          <iframe
+            src={iframeUrl}
+            onLoad={() => setLoading(false)}
+            className={`rounded-lg transition-opacity duration-300 ${loading ? "opacity-0" : "opacity-100"
+              } w-full md:w-[1000px]`}
+            height={200}
           />
-          </>
+        </>
       )}
     </div>
   );

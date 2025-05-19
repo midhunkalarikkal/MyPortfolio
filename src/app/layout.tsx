@@ -39,7 +39,7 @@ export default function RootLayout({
     <head>
       <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     </head>
-      <body className="font-['poppins'] bg-neutral-950 relative min-h-screen">{children}</body>
+      <body className="font-['poppins'] bg-neutral-950 min-h-screen w-full">{children}</body>
     </html>
   )
 }
