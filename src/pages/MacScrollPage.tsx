@@ -7,7 +7,7 @@ export const MacScrollPage: React.FC = () => {
     <div className="w-full md:max-w-10/12">
       <Heading title="Connect with me" smallTitle="Midhun K Paniker" />
       <MacbookScroll
-        src={`/midhunIntro.png`}
+        src={`/LoadingBg.png`}
         showGradient={false}
       />
     </div>

@@ -142,7 +142,7 @@ export const HomePage: React.FC = () => {
                                         </h2>
 
                                         <nav id="navbar" className="mt-4">
-                                            <ul className="flex justify-around md:justify-start md:gap-4 text-md">
+                                            <ul className="hidden md:flex md:justify-start md:gap-4 text-md">
                                                 {navLinks.map((link, index) => (
                                                     <li key={index}><Link className="nav-link" href="#header">{link}</Link></li>
                                                 ))}
@@ -169,19 +169,19 @@ export const HomePage: React.FC = () => {
 
                                 {/* right side */}
                                 <div className="hidden md:flex justify-center items-center w-1/2 h-full">
-                                    <div
-                                        id="into-image"
-                                        className="w-full h-auto"
-                                        ref={midhunIntroImageRef}
-                                    >
-                                        <Image
-                                            src="/midhunIntro.png"
-                                            alt="Image"
-                                            className="w-full h-full"
-                                            width={1000}
-                                            height={1000}
-                                        />
-                                    </div>
+                                        <div
+                                            id="into-image"
+                                            className="w-full h-auto"
+                                            ref={midhunIntroImageRef}
+                                        >
+                                            <Image
+                                                src="/midhunIntro.png"
+                                                alt="Image"
+                                                className="w-full h-full"
+                                                width={1000}
+                                                height={1000}
+                                            />
+                                        </div>
                                 </div>
 
                             </div>

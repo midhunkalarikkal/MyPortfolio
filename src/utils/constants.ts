@@ -70,7 +70,7 @@ export const gsapToMainObject = {
 
 
 // **** Stats page github and leetcode urls **** \\
-export const gihubStatsUrl: string = `https://github-readme-stats.vercel.app/api?username=midhunkalarikkal&show_icons=true&title_color=34d399&text_color=ffffff&icon_color=34d399&bg_color=000000&hide_border=true`;
+export const gihubStatsUrl: string = `https://github-readme-stats.vercel.app/api?username=midhunkalarikkal&show_icons=true&title_color=18d26e&text_color=ffffff&icon_color=18d26e&bg_color=000000&hide_border=true`;
 export const leetcodeStatsLink: string = `https://leetcard.jacoblin.cool/midhunkpaniker?theme=dark&font=Karla&ext=heatmap`;
 export const githubTrophiesStatsLink: string = "https://github-profile-trophy.vercel.app/?username=midhunkalarikkal&theme=darkhub&no-frame=true";
 export const githubContributionTilesLink: string = "https://ghchart.rshah.org/18d26e/midhunkalarikkal";

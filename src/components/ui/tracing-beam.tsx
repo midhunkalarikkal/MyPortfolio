@@ -41,9 +41,9 @@ export const TracingBeam = ({
   } else {
     return `M 1 0 V 
                 -36 l 18 24 V 
-                ${svgHeight * 0.3} 
+                ${svgHeight * 0.21} 
                 l -18 24 V 
-                ${svgHeight * 0.5} 
+                ${svgHeight * 0.33} 
                 l 18 24 V 
                 ${svgHeight} 
                 `;

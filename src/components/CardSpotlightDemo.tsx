@@ -50,7 +50,7 @@ export const CardSpotlightHover: React.FC<CardSpotlightHoverInterface> = ({
 
       {/* Tech Stack */}
       <h4 className="text-sm text-semibold mt-4">Tools & Technologies</h4>
-      <div className="flex items-center gap-2 overflow-x-auto hide-scrollbar">
+      <div className="flex items-center gap-2 overflow-x-auto hide-scrollbar mt-2">
         {techStack.map((tech, index) => (
           <i key={index} className={`${tech}`}></i>
         ))}
