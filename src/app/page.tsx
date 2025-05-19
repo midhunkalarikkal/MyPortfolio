@@ -11,7 +11,7 @@ export default function home() {
     return (
         <>
             <HomePage />
-            <TracingBeam className="h-auto w-full md:max-w-6xl" >
+            <TracingBeam className="h-auto w-full" >
                 <SkillsPage />
                 <EducationPage />
                 {/* <PortfolioPage /> */}

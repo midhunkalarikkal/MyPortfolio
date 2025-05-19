@@ -2,17 +2,16 @@
 
 import React from "react";
 import Image from "next/image";
+import { Heading } from "@/components/Heading";
 
 export function SkillsPage() {
   return (
 
-    <div className="text-white mx-auto antialiased pt-4 relative py-20">
-      <h2 className="text-lg md:text-4xl text-white my-10">
-        Skills
-      </h2>
+    <div className="text-white antialiased pt-1 pb-4 md:pt-4 md:pb-4 relative w-full md:max-w-10/12">
+      <Heading title="Skills" smallTitle="Stack Mastery"/>
       {skillsContent.map((item, index) => (
         <div key={`content-${index}`} className="mb-10">
-          <p className="text-xl mb-4">{item.title}</p>
+          <p className="text- md:text-xl mb-4">{item.title}</p>
           <div className="">
             {item.description}
           </div>
@@ -94,7 +93,7 @@ const skillsContent = [
         {languages.map((lang) => (
           <li key={lang.label} className="flex items-center">
             {lang.image}
-            <span className="ml-2">{lang.label}</span>
+            <span className="ml-2 text-sm md:text-lg">{lang.label}</span>
           </li>
         ))}
       </ul>

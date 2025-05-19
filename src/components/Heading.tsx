@@ -1,17 +1,16 @@
 interface HeadingInterface {
-    title: string;
+  title: string;
+  smallTitle?: string;
 }
 
 export const Heading: React.FC<HeadingInterface> = ({
-    title
+  title,
+  smallTitle
 }) => {
-    return (
-        <div className="w-full pt-10">
-        <div className="w-[77%] mx-auto px-4 md:px-8 lg:px-10 mt-6">
-          <h2 className="text-lg md:text-4xl mb-4 text-white">
-            {title}
-          </h2>
-        </div>
-      </div>
-    )
+  return (
+    <div className="my-4 md:my-10">
+      <h2 className="text-2xl md:text-4xl text-white">{title}</h2>
+      <h6 className="text-green-400 text-semibold">{smallTitle}</h6>
+    </div>
+  )
 }

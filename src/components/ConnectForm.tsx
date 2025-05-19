@@ -1,7 +1,7 @@
 'use client';
 
-import { Send } from 'lucide-react';
 import Image from 'next/image';
+import { Send } from 'lucide-react';
 import { useState } from 'react';
 
 export const ConnectForm = () => {
@@ -12,8 +12,8 @@ export const ConnectForm = () => {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Form submitted with:', inputValue);
-        // Handle your logic here (e.g. API call)
     };
+
     return (
         <form
             onSubmit={handleSubmit}
@@ -27,7 +27,7 @@ export const ConnectForm = () => {
                 height={1000}
             />
 
-            <div className="absolute flex flex-col gap-2 items-center bg-white p-3 rounded-md shadow-md w-64">
+            <div className="absolute flex flex-col gap-2 items-center bg-white p-3 rounded-md shadow-md w-8/12 md:w-1/2">
                 <div className='p-4'>
                     <h1 className='text-md font-bold'>Connect me</h1>
                 </div>

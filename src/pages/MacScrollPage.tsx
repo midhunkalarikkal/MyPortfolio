@@ -1,17 +1,12 @@
 import React from "react";
 import { MacbookScroll } from "@/components/ui/macbook-scroll";
+import { Heading } from "@/components/Heading";
 
 export const MacScrollPage: React.FC = () => {
-    return (
-    <div className="overflow-hidden bg-[#0B0B0F] w-full">
+  return (
+    <div className="w-full md:max-w-10/12">
+      <Heading title="Connect with me" smallTitle="Midhun K Paniker" />
       <MacbookScroll
-        title={
-          <>
-          <span> Thank You For Your Visit</span> <br />
-          <p className="text-lg mt-2 text-green-400">Connect me</p>
-          </>
-
-        }
         src={`/midhunIntro.png`}
         showGradient={false}
       />
