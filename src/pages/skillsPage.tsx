@@ -41,7 +41,7 @@ const languages: SkillItem[] = [
 ];
 
 const libraries: SkillItem[] = [
-  { label: "Node.js", image: <i className="devicon-nodejs-plain colored"></i> },
+  { label: "Node.js", image: <i className="devicon-nodejs-plain-wordmark colored"></i> },
   { label: "Express", image: <i className="devicon-express-original"></i> },
   { label: "React JS", image: <i className="devicon-react-original colored"></i> },
   { label: "Next JS", image: <i className="devicon-nextjs-plain"></i> },
@@ -49,17 +49,23 @@ const libraries: SkillItem[] = [
   { label: "Bootstrap", image: <i className="devicon-bootstrap-plain colored"></i> },
   { label: "MUI", image: <i className="devicon-materialui-plain colored"></i> },
   { label: 'Socket.io', image: <Image src="/socketiologo.png" alt="socketio" width={1000} height={1000} className="w-4 h-4" /> },
-
+  { label: 'GSAP', image: <Image src="/gsaplogo.png" alt="socketio" width={1000} height={1000} className="w-4 h-4" /> },
 ];
 
 const tools: SkillItem[] = [
   { label: "Git", image: <i className="devicon-git-plain colored"></i> },
   { label: "Postman", image: <i className="devicon-postman-plain colored"></i> },
   { label: "Jest", image: <i className="devicon-jest-plain colored"></i> },
-  { label: "Render", image: <Image src="/render.logo.jpeg" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
+  { label: "Render", image: <Image src="/renderlogo.jpeg" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
   { label: "Vercel", image: <i className="devicon-vercel-original"></i> },
   { label: "AWS", image: <i className="devicon-amazonwebservices-plain colored"></i> },
   { label: "Firebase", image: <i className="devicon-firebase-plain colored"></i> },
+  { label: "Redis", image: <i className="devicon-redis-plain-wordmark"></i> },
+  { label: "EJS", image: <Image src="/ejslogo.png" alt="render" width={1000} height={1000} className="w-4 h-4 invert" /> },
+  { label: "Cloudinary", image: <Image src="/cloudinarylogo.png" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
+  { label: "Razorpay", image: <Image src="/razorpaylogo.jpeg" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
+  { label: "Stripe", image: <Image src="/stripelogo.png" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
+  { label: "Paypal", image: <Image src="/paypallogo.png" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
 ];
 
 const designTools: SkillItem[] = [

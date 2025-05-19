@@ -3,8 +3,8 @@ import { StatsPage } from "@/pages/statsPage";
 import { SkillsPage } from "@/pages/skillsPage";
 import { EducationPage } from "@/pages/educationPage";
 import { MacScrollPage } from "@/pages/macScrollPage";
+import { PortfolioPage } from "@/pages/portfolioPage";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-// import { PortfolioPage } from "@/pages/portfolioPage";
 
 
 export default function home() {
@@ -14,7 +14,7 @@ export default function home() {
                 <HomePage />
                 <SkillsPage />
                 <EducationPage />
-                {/* <PortfolioPage /> */}
+                <PortfolioPage />
                 <StatsPage />
                 <MacScrollPage />
             </TracingBeam>

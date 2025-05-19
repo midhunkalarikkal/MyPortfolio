@@ -3,7 +3,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['github-readme-stats.vercel.app'],
+    domains: ['github-readme-stats.vercel.app','res.cloudinary.com'],
   },
 };
 
