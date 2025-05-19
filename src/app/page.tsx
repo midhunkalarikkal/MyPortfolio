@@ -10,8 +10,8 @@ import { TracingBeam } from "@/components/ui/tracing-beam";
 export default function home() {
     return (
         <>
-            <HomePage />
             <TracingBeam className="h-auto w-full" >
+                <HomePage />
                 <SkillsPage />
                 <EducationPage />
                 {/* <PortfolioPage /> */}

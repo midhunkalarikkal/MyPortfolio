@@ -23,27 +23,27 @@ export const TracingBeam = ({
   if (screenSize === "sm") {
     return `M 1 0 V 
                 -36 l 18 24 V 
-                ${svgHeight * 0.25} 
+                ${svgHeight * 0.37} 
                 l -10 24 V 
-                ${svgHeight * 0.58} 
+                ${svgHeight * 0.62} 
                 l 10 24 V 
                 ${svgHeight} 
                 `;
   } else if (screenSize === "md") {
     return `M 1 0 V 
                 -36 l 18 24 V 
-                ${svgHeight * 0.16} 
+                ${svgHeight * 0.25} 
                 l -18 24 V 
-                ${svgHeight * 0.48} 
+                ${svgHeight * 0.6} 
                 l 18 24 V 
                 ${svgHeight} 
                 `;
   } else {
     return `M 1 0 V 
                 -36 l 18 24 V 
-                ${svgHeight * 0.17} 
+                ${svgHeight * 0.3} 
                 l -18 24 V 
-                ${svgHeight * 0.35} 
+                ${svgHeight * 0.5} 
                 l 18 24 V 
                 ${svgHeight} 
                 `;

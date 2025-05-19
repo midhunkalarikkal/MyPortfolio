@@ -76,6 +76,7 @@ const stateManagement: SkillItem[] = [
 
 const concepts: SkillItem[] = [
   { label: 'MVC Architecture', image: <Image src="/mvcarchitecturelogo.png" alt="mvcarchitecture" width={1000} height={1000} className="w-4 h-4" /> },
+  { label: 'CLEAN Architecture', image: <Image src="/cleanarchitecturelogo.png" alt="mvcarchitecture" width={1000} height={1000} className="w-4 h-4" /> },
   { label: 'Waterfall Model', image: <Image src="/waterfallmodellogo.png" alt="waterfallmodel" width={1000} height={1000} className="w-4 h-4 invert" /> },
   { label: 'SOLID Principles', image: <Image src="/solidprincipleslogo.png" alt="solidprinciples" width={1000} height={1000} className="w-4 h-4" /> },
 ];

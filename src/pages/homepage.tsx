@@ -110,21 +110,10 @@ export const HomePage: React.FC = () => {
             </div>
 
             {showContent && (
-                <div className="main w-full scale-[1.7]">
-                    <div className="landing overflow-hidden relative w-full h-screen bg-black flex">
-
-                        {/* backgoround image */}
-
-                        <Image
-                            src="/portfolioBg.jpg"
-                            className="w-full h-screen relative object-cover repeat-0 object-top-right"
-                            alt="BackgroundImage"
-                            width={1000}
-                            height={1000}
-                        />
-
+                <div className="main w-full md:max-w-10/12 scale-[1.7]">
+                    <div className="landing overflow-hidden relative w-full h-screen flex">
                         <div className="w-full h-screen flex justify-center items-center absolute">
-                            <div className="w-full md:w-8/12 flex flex-col md:flex-row h-full">
+                            <div className="w-full flex flex-col md:flex-row h-full">
 
                                 {/* my top image for small screens */}
                                 <div className="md:hidden flex items-end w-full h-1/2">
