@@ -1,19 +1,19 @@
 'use client'
 
-import { LampPage } from "@/pages/lampPage";
-import { HomePage } from "@/pages/homepage";
+import { LampPage } from "@/sections/lampPage";
+import { HomePage } from "@/sections/homepage";
 import { useEffect, useState } from "react";
-import { StatsPage } from "@/pages/statsPage";
-import { SkillsPage } from "@/pages/skillsPage";
-import { FooterPage } from "@/pages/footerPage";
-import { useCounterStore } from "@/utils/store";
-import { LoadingPage } from "@/pages/loadingPage";
-import { EducationPage } from "@/pages/educationPage";
-import { MacScrollPage } from "@/pages/macScrollPage";
-import { PortfolioPage } from "@/pages/portfolioPage";
+import { StatsPage } from "@/sections/statsPage";
+import { SkillsPage } from "@/sections/skillsPage";
+import { FooterPage } from "@/sections/footerPage";
+import { useCounterStore } from "@/store/store";
+import { ToastContainer } from "react-toastify";
+import { LoadingPage } from "@/sections/loadingPage";
+import { EducationPage } from "@/sections/educationPage";
+import { MacScrollPage } from "@/sections/macScrollPage";
+import { PortfolioPage } from "@/sections/portfolioPage";
 import { ConnectForm } from "@/components/ConnectForm";
 import { TracingBeam } from "@/components/ui/tracing-beam";
-import { ToastContainer } from "react-toastify";
 
 
 export default function Home() {

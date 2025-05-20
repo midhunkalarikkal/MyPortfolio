@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Loader, Send, X } from 'lucide-react';
 import { handleSubmit } from '@/utils/helper';
-import { useCounterStore } from '@/utils/store';
+import { useCounterStore } from '@/store/store';
 import { ConnectButton } from './contactButton';
 
 export const ConnectForm: React.FC = () => {
