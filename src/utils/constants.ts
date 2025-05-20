@@ -14,11 +14,13 @@ export const navLinks: string[] = [
 ]
 
 // Home page icons
-type IconKey = "Linkedin" | "Github" | "CodeXml";
+type IconKey = "Linkedin" | "Github" | "CodeXml" | "Mail" | "Phone";
 export const logoLinks: { href: string; target: string; icon: IconKey }[] = [
     { href: "https://www.linkedin.com/in/midhun-k-paniker-726226231", target: "LinkedIn", icon: "Linkedin" },
     { href: "https://github.com/midhunkalarikkal", target: "Github", icon: "Github" },
     { href: "https://leetcode.com/u/midhunkpaniker/", target: "LeetCode", icon: "CodeXml" },
+    { href: "midhunkpaniker@gmail.com", target: "Email", icon: "Mail" },
+    { href: "tel:+918157974230", target: "Phone", icon: "Phone" },
 ];
 
 

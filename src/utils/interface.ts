@@ -38,6 +38,8 @@ export interface IconMap {
   Linkedin: ReactNode;
   Github: ReactNode;
   CodeXml: ReactNode;
+  Mail: ReactNode;
+  Phone: ReactNode;
 }
 
 // **** Stats Component Interface **** \\

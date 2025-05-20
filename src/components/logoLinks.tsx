@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { logoLinks } from '@/utils/constants';
-import { CodeXml, Github, Linkedin } from "lucide-react";
+import { CodeXml, Github, Linkedin, Mail, Phone } from "lucide-react";
 import { IconMap, LogoLinksInterface } from '@/utils/interface';
 
 export const LogoLinks: React.FC<LogoLinksInterface> = ({
@@ -12,6 +12,8 @@ export const LogoLinks: React.FC<LogoLinksInterface> = ({
         Linkedin: <Linkedin />,
         Github: <Github />,
         CodeXml: <CodeXml />,
+        Mail: <Mail />,
+        Phone: <Phone />
     };
 
     return (
@@ -22,7 +24,7 @@ export const LogoLinks: React.FC<LogoLinksInterface> = ({
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-[#18d26e] transition-colors duration-200"
+                    className="text-sm hover:text-[#18d26e] transition-colors duration-200"
                     aria-label={link.target}
                 >
                     {iconMap[link.icon]}
