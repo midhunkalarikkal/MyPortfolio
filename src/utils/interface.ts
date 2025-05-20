@@ -47,3 +47,8 @@ export interface StatsComponent {
   url: string;
   height: number | string;
 }
+
+// **** LogogLinkSection Interface **** \\
+export interface LogoLinksInterface {
+    className?: string;
+}

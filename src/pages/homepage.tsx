@@ -137,7 +137,7 @@ export const HomePage: React.FC = () => {
                                                 ))}
                                             </ul>
                                         </nav>
-                                        <LogoLinks className="social-links flex gap-6 mt-4 text-2xl justify-center md:justify-start" />
+                                        <LogoLinks className="justify-center md:justify-start gap-5"/>
                                     </div>
                                 </div>
 
