@@ -8,12 +8,12 @@ import { SkillsPage } from "@/sections/skillsPage";
 import { FooterPage } from "@/sections/footerPage";
 import { useCounterStore } from "@/store/store";
 import { ToastContainer } from "react-toastify";
-import { LoadingPage } from "@/sections/loadingPage";
 import { EducationPage } from "@/sections/educationPage";
 import { MacScrollPage } from "@/sections/macScrollPage";
 import { PortfolioPage } from "@/sections/portfolioPage";
 import { ConnectForm } from "@/components/ConnectForm";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import { MultiStepLoader } from "@/sections/multiStepLoader";
 
 
 export default function Home() {
@@ -25,12 +25,13 @@ export default function Home() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoading(false);
-    }, 1500);
+    }, 5000);
 
     return () => clearTimeout(timeout);
   }, []);
 
-  if (isLoading) return <LoadingPage />
+  if (isLoading) return <MultiStepLoader onComplete={() => setIsLoading(false)} />;
+
 
   if (contactFormOpen) return <ConnectForm />
 
