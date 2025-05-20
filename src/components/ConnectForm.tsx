@@ -1,9 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import { Send, X } from 'lucide-react';
 import { useState } from 'react';
-import CustomButton from './CustomButton';
+import { Send, X } from 'lucide-react';
 
 export const ConnectForm = () => {
 

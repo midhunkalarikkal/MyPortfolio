@@ -4,18 +4,9 @@ import gsap from "gsap";
 import Link from "next/link";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
+import { LogoLinks } from "@/components/logoLinks";
 import { useEffect, useRef, useState } from "react";
-import { CodeXml, Facebook, Github, Instagram, Linkedin, TwitterIcon } from "lucide-react";
-import { designationArray, gsapFromHomePageMainObject, gsapSetHomePageMainObject, gsapToMainObject, gsapToNameMaskGroupFirstObject, gsapToNameMaskGroupSecondObject, logoLinks, navLinks } from "@/utils/constants";
-
-const iconMap = {
-    Linkedin: <Linkedin />,
-    Github: <Github />,
-    CodeXml: <CodeXml />,
-    TwitterIcon: <TwitterIcon />,
-    Facebook: <Facebook />,
-    Instagram: <Instagram />,
-};
+import { designationArray, gsapFromHomePageMainObject, gsapSetHomePageMainObject, gsapToMainObject, gsapToNameMaskGroupFirstObject, gsapToNameMaskGroupSecondObject, navLinks } from "@/utils/constants";
 
 export const HomePage: React.FC = () => {
 
@@ -148,21 +139,7 @@ export const HomePage: React.FC = () => {
                                                 ))}
                                             </ul>
                                         </nav>
-
-                                        <div className="social-links flex gap-6 mt-4 text-2xl justify-center md:justify-start">
-                                            {logoLinks.map((link, index) => (
-                                                <Link
-                                                    key={index}
-                                                    href={link.href}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    className="hover:text-[#18d26e] transition-colors duration-200"
-                                                    aria-label={link.target}
-                                                >
-                                                    {iconMap[link.icon]}
-                                                </Link>
-                                            ))}
-                                        </div>
+                                        <LogoLinks className="social-links flex gap-6 mt-4 text-2xl justify-center md:justify-start" />
                                     </div>
                                 </div>
 

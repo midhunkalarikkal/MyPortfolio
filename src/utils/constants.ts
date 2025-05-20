@@ -13,14 +13,11 @@ export const navLinks: string[] = [
 ]
 
 // Home page icons
-type IconKey = "Linkedin" | "Github" | "CodeXml" | "TwitterIcon" | "Facebook" | "Instagram";
+type IconKey = "Linkedin" | "Github" | "CodeXml";
 export const logoLinks: { href: string; target: string; icon: IconKey }[] = [
     { href: "https://www.linkedin.com/in/midhun-k-paniker-726226231", target: "LinkedIn", icon: "Linkedin" },
     { href: "https://github.com/midhunkalarikkal", target: "Github", icon: "Github" },
     { href: "https://leetcode.com/u/midhunkpaniker/", target: "LeetCode", icon: "CodeXml" },
-    { href: "https://x.com/Midhun_k__?t=628ZJ1W-dZl53LikH4F2hg&s=09", target: "X", icon: "TwitterIcon" },
-    { href: "https://www.facebook.com/midhunpaniker1?mibextid=ZbWKwL", target: "Facebook", icon: "Facebook" },
-    { href: "https://instagram.com/midhun_kalarikkal__?igshid=OGQ5ZDc2ODk2ZA==", target: "Instagram", icon: "Instagram" },
 ];
 
 

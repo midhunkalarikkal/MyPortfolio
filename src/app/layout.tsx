@@ -1,5 +1,5 @@
 import './globals.css';
-        
+
 
 import { Orbitron, Poppins, Audiowide } from 'next/font/google';
 
@@ -35,10 +35,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-   <html lang="en" className={`${orbitron.variable} ${poppins.variable} ${audioWide.variable}`}>
-    <head>
-      <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    </head>
+    <html lang="en" className={`${orbitron.variable} ${poppins.variable} ${audioWide.variable}`}>
+      <head>
+        <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+      </head>
       <body className="font-['poppins'] bg-neutral-950 min-h-screen w-full">{children}</body>
     </html>
   )

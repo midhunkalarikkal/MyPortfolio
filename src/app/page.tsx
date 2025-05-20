@@ -5,6 +5,7 @@ import { EducationPage } from "@/pages/educationPage";
 import { MacScrollPage } from "@/pages/macScrollPage";
 import { PortfolioPage } from "@/pages/portfolioPage";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import { FooterPage } from "@/pages/footerPage";
 
 
 export default function home() {
@@ -18,6 +19,7 @@ export default function home() {
                 <StatsPage />
                 <MacScrollPage />
             </TracingBeam>
+            <FooterPage />
         </>
     )
 }
