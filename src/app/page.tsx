@@ -13,6 +13,7 @@ import { MacScrollPage } from "@/pages/macScrollPage";
 import { PortfolioPage } from "@/pages/portfolioPage";
 import { ConnectForm } from "@/components/ConnectForm";
 import { TracingBeam } from "@/components/ui/tracing-beam";
+import { ToastContainer } from "react-toastify";
 
 
 export default function Home() {
@@ -35,6 +36,7 @@ export default function Home() {
 
   return (
     <>
+      <ToastContainer theme="dark" />
       <TracingBeam className="h-auto w-full" >
         <HomePage />
         <SkillsPage />

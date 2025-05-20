@@ -52,3 +52,24 @@ export interface StatsComponent {
 export interface LogoLinksInterface {
     className?: string;
 }
+
+// **** Handle Submit Connect Form for Contact Interface **** \\
+export interface handleSubmitInterface {
+    e: React.FormEvent;
+    inputValue: string;
+    textAreaValue: string;
+    setInputValue: (data: string) => void;
+    setTextAreaValue: (data: string) => void;
+    contactFormOpen: boolean;
+    closeConnectForm: () => void;
+    setOpenForm: (data: boolean) => void;
+    setLoading: (data: boolean) => void;
+}
+
+// **** Connect Button Interface **** \\
+export interface ConnectButtonInterface {
+    className: string;
+    setOpenForm?: (data: boolean) => void;
+    openConnectForm?: () => void;
+    lgForm: boolean;
+}

@@ -2,28 +2,37 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
-import { Send, X } from 'lucide-react';
+import { Loader, Send, X } from 'lucide-react';
+import { handleSubmit } from '@/utils/helper';
 import { useCounterStore } from '@/utils/store';
-import { toast } from 'react-toastify';
+import { ConnectButton } from './contactButton';
 
 export const ConnectForm: React.FC = () => {
-  const [inputValue, setInputValue] = useState('');
-  const [textAreaValue, setTextAreaValue] = useState('');
-  const [openForm, setOpenForm] = useState(false); // for desktop
 
-  const openConnectForm = useCounterStore((state) => state.openForm);  // for mobile
+  const [inputValue, setInputValue] = useState<string>('');
+  const [textAreaValue, setTextAreaValue] = useState<string>('');
+  const [openForm, setOpenForm] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const openConnectForm = useCounterStore((state) => state.openForm);
   const closeConnectForm = useCounterStore((state) => state.closeForm);
   const contactFormOpen = useCounterStore((state) => state.contactFormOpen);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("We are working on it");
-    return;
-  };
-
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={(e) => {
+        handleSubmit({
+          e,
+          inputValue,
+          textAreaValue,
+          setInputValue,
+          setTextAreaValue,
+          contactFormOpen,
+          closeConnectForm,
+          setOpenForm,
+          setLoading
+        });
+      }}
       className="absolute inset-0 flex justify-center items-center rounded-lg backdrop-blur-sm"
     >
       {/* Image only on md and above */}
@@ -34,44 +43,32 @@ export const ConnectForm: React.FC = () => {
         width={1000}
         height={1000}
       />
-      <div className='relative w-full h-full bg-black -z-10 block md:hidden'>
-
-      </div>
+      <div className='relative w-full h-full bg-black -z-10 block md:hidden'></div>
 
       {/* Button for desktop */}
       {!openForm && (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            setOpenForm(true);
-          }}
-          className="absolute left-14 top-[60%] hidden md:block text-xs px-6 border border-green-400 rounded-xl text-white"
-        >
-          Send Message
-        </button>
+        <ConnectButton
+          lgForm={true}
+          setOpenForm={setOpenForm}
+          className="left-14 top-[60%] hidden md:block text-xs px-6"
+        />
+
       )}
 
       {/* Button for mobile */}
       {!contactFormOpen && (
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            openConnectForm();
-          }}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block md:hidden text-lg px-14 py-3 border border-green-400 rounded-xl text-white"
-        >
-          Send Message
-        </button>
+        <ConnectButton
+          lgForm={false}
+          openConnectForm={openConnectForm}
+          className="left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 block md:hidden text-lg px-14 py-3"
+        />
       )}
 
       {/* Form - shown based on screen type */}
-      {(openForm || contactFormOpen) && (
+      {(openForm || contactFormOpen) && !loading ? (
         <div
-          className={`absolute flex flex-col gap-2 items-center p-3 rounded-md shadow-md w-11/12 md:w-1/2 text-white ${
-            contactFormOpen ? 'bg-black/80 block md:hidden' : 'bg-black/80 hidden md:flex'
-          }`}
+          className={`absolute flex flex-col gap-2 items-center p-3 rounded-md shadow-md w-11/12 md:w-1/2 text-white ${contactFormOpen ? 'bg-black/80 block md:hidden' : 'bg-black/80 hidden md:flex'
+            }`}
         >
           <h1 className="text-md font-bold">Connect me</h1>
           <input
@@ -96,7 +93,6 @@ export const ConnectForm: React.FC = () => {
               Send
             </button>
             <button
-              type="button"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -109,6 +105,11 @@ export const ConnectForm: React.FC = () => {
               Close
             </button>
           </div>
+        </div>
+      ) : loading && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-black/60 backdrop-blur-sm rounded-md z-20">
+          <Loader className="animate-spin size-6 text-green-400" />
+          <p className="text-xs text-white animate-pulse">Sending...</p>
         </div>
       )}
     </form>
