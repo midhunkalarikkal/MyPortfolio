@@ -1,17 +1,17 @@
 'use client'
 
+import { useEffect, useState } from "react";
 import { LampPage } from "@/sections/lampPage";
 import { HomePage } from "@/sections/homepage";
-import { useEffect, useState } from "react";
+import { useCounterStore } from "@/store/store";
+import { ToastContainer } from "react-toastify";
 import { StatsPage } from "@/sections/statsPage";
 import { SkillsPage } from "@/sections/skillsPage";
 import { FooterPage } from "@/sections/footerPage";
-import { useCounterStore } from "@/store/store";
-import { ToastContainer } from "react-toastify";
+import { ConnectForm } from "@/components/ConnectForm";
 import { EducationPage } from "@/sections/educationPage";
 import { MacScrollPage } from "@/sections/macScrollPage";
 import { PortfolioPage } from "@/sections/portfolioPage";
-import { ConnectForm } from "@/components/ConnectForm";
 import { TracingBeam } from "@/components/ui/tracing-beam";
 import { MultiStepLoader } from "@/sections/multiStepLoader";
 
@@ -32,7 +32,6 @@ export default function Home() {
 
   if (isLoading) return <MultiStepLoader onComplete={() => setIsLoading(false)} />;
 
-
   if (contactFormOpen) return <ConnectForm />
 
   return (
@@ -48,8 +47,13 @@ export default function Home() {
         <div className="hidden md:block">
           <LampPage />
         </div>
+        <div className="hidden md:block">
+          <FooterPage />
+        </div>
       </TracingBeam>
-      <FooterPage />
+      <div className="block md:hidden">
+        <FooterPage />
+      </div>
     </>
   )
 }

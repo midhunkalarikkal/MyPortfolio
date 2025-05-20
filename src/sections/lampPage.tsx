@@ -15,7 +15,7 @@ export const LampPage:React.FC = () => {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="mt-8 bg-gradient-to-br from-green-100 to-green-100 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+        className="mt-8 bg-gradient-to-br from-green-100 to-green-100 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-5xl"
       >
         {"Let's Connect"} <br /> {"&"} <br /> {"Build something AMAZING"}
       </motion.h1>
