@@ -2,16 +2,13 @@ import React from 'react';
 import Link from 'next/link';
 import { logoLinks } from '@/utils/constants';
 import { CodeXml, Github, Linkedin } from "lucide-react";
-
-interface LogoLinksInterface {
-    className?: string
-}
+import { IconMap, LogoLinksInterface } from '@/utils/interface';
 
 export const LogoLinks: React.FC<LogoLinksInterface> = ({
     className
 }) => {
 
-    const iconMap = {
+    const iconMap: IconMap = {
         Linkedin: <Linkedin />,
         Github: <Github />,
         CodeXml: <CodeXml />,

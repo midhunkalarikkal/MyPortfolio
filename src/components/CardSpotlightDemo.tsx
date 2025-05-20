@@ -1,19 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { CardSpotlight } from "@/components/ui/card-spotlight";
-
-interface CardSpotlightHoverInterface {
-  image: string;
-  title: string;
-  techStack: string[];
-  description: string;
-  techImageStack?: { url: string, className?: string }[];
-  liveLink?: string;
-  githubLink?: string
-  frontendGithubLink?: string;
-  backendGithubLink?: string;
-  underDevelopment?: boolean;
-}
+import { CardSpotlightHoverInterface } from "@/utils/interface";
 
 export const CardSpotlightHover: React.FC<CardSpotlightHoverInterface> = ({
   image,
@@ -29,7 +17,6 @@ export const CardSpotlightHover: React.FC<CardSpotlightHoverInterface> = ({
 }) => {
   return (
     <CardSpotlight className="min-h-[450px] w-full max-w-sm flex flex-col justify-between p-4 rounded-2xl bg-neutral-900 shadow-md transition-all hover:shadow-xl">
-      {/* Image */}
       <div className="w-full h-48 rounded-lg overflow-hidden">
         <Image
           src={image || "/midhun.jpg"}
@@ -40,7 +27,6 @@ export const CardSpotlightHover: React.FC<CardSpotlightHoverInterface> = ({
         />
       </div>
 
-      {/* Title */}
       <p className="text-xl font-semibold text-white mt-4">
         {title || "Title"}
         {underDevelopment && (
@@ -48,7 +34,6 @@ export const CardSpotlightHover: React.FC<CardSpotlightHoverInterface> = ({
         )}
       </p>
 
-      {/* Tech Stack */}
       <h4 className="text-sm text-semibold mt-4">Tools & Technologies</h4>
       <div className="flex items-center gap-2 overflow-x-auto hide-scrollbar mt-2">
         {techStack.map((tech, index) => (
@@ -59,13 +44,10 @@ export const CardSpotlightHover: React.FC<CardSpotlightHoverInterface> = ({
         ))}
       </div>
 
-      {/* Description */}
       <p className="text-sm text-neutral-300 mt-4 line-clamp-3">
-        {description ||
-          "Ensuring your account is properly secured helps protect your personal information and data."}
+        {description || "Loading..."}
       </p>
 
-      {/* Links */}
       <div className="flex flex-wrap items-center gap-2 mt-6">
         {liveLink && (
           <Link

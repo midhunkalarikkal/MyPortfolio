@@ -1,291 +1,61 @@
+'use client'
+
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 import { Heading } from "@/components/Heading";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { portfolioData } from "@/utils/constants";
 import { CardSpotlightHover } from "@/components/CardSpotlightDemo";
 
-const portfolioData = [
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669022/Slotflow1_oknpne.jpg",
-    title: "Slotflow",
-    techStack: [
-      "devicon-react-original colored",
-      "devicon-typescript-plain colored",
-      "devicon-nodejs-plain-wordmark colored",
-      "devicon-tailwindcss-plain colored",
-      "devicon-express-original",
-      "devicon-mongodb-plain colored",
-      "devicon-amazonwebservices-plain colored",
-      "devicon-redis-plain-wordmark",
-      "devicon-redux-plain colored",
-    ],
-    techImageStack: [
-      { url: "/cleanarchitecturelogo.png" },
-      { url: "/solidprincipleslogo.png" },
-      { url: "/gsaplogo.png" },
-    ],
-    description: "I’ve built a scalable SaaS-based Appointment Booking Application using the MERN Stack, TypeScript, TanStack Query, and shadcn/ui. Now in the testing and deployment stage, the platform supports multiple user roles—admin, provider, and customer—with secure, role-based dashboards. It features over 12 well-structured schemas, AWS S3 for file storage, Redis for caching, and Aceternity for smooth UI animations. Real-time data fetching and efficient state management ensure a seamless and high-performance user experience.",
-    backendGithubLink: "https://github.com/midhunkalarikkal/slotflow-BE",
-    frontendGithubLink: "https://github.com/midhunkalarikkal/Slotflow-FE",
-    underDevelopment: true,
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747670342/pixster_pmq0cw.png",
-    title: "Pixster",
-    techStack: [
-      "devicon-react-original colored",
-      "devicon-tailwindcss-plain colored",
-      "devicon-nodejs-plain-wordmark colored",
-      "devicon-express-original",
-      "devicon-mongodb-plain colored",
-      "devicon-amazonwebservices-plain colored",
-      "devicon-redis-plain-wordmark",
-    ],
-     techImageStack: [
-      { url: "/zustandlogo.png" },
-      { url: "/renderlogo.jpeg" },
-      { url: "/gsaplogo.png" },
-      { url: "/socketiologo.png" },
-    ],
-    description: "I developed Pixster, a dynamic social media web application built from scratch to explore real-time interaction and content sharing. Designed with a modern tech stack, Pixster allows users to create profiles, post images, like and comment, follow others, and manage their personal feed. The project focuses on smooth UI/UX, optimized data handling, and real-time updates, giving me deep insights into scalable architecture, authentication systems, and interactive social features.",
-    liveLink: "https://pixster.onrender.com/",
-    githubLink: "https://github.com/midhunkalarikkal/pixster",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669234/Lapshop1_mlhdfo.png",
-    title: "Lapshop",
-    techStack: [
-      "devicon-html5-plain colored",
-      "devicon-css3-plain colored",
-      "devicon-javascript-plain colored",
-      "devicon-Bootstrap-plain colored",
-      "devicon-nodejs-plain-wordmark colored",
-      "devicon-express-original",
-      "devicon-mongodb-plain colored",
-      "devicon-amazonwebservices-plain colored",
-    ],
-    techImageStack: [
-      { url: "/mvcarchitecturelogo.png" },
-    ],
-    description: "I developed a full-fledged E-Commerce Web Application for laptops from scratch, gaining hands-on experience across the full stack. The platform includes key features such as filtering, sorting, cart with save for later, product reviews, order tracking, flexible payment options, and a fully responsive design. It also offers an admin dashboard with product, order, user, banner, and coupon management, along with detailed sales reports for business insights.",
-    liveLink: "https://lapshop.site/",
-    githubLink: "https://github.com/midhunkalarikkal/lapshop",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747678551/Screenshot_2025-05-19_194607_njo9c0.png",
-    title: "Portfolio Webpage",
-    techStack: [
-      "devicon-nextjs-plain",
-      "devicon-typescript-plain colored",
-      "devicon-firebase-plain colored",
-    ],
-    techImageStack: [
-      { url: "/gsaplogo.png" },
-    ],
-    description: "A sleek personal portfolio built with Next.js, TypeScript, and Tailwind CSS, featuring smooth animations using GSAP. Includes sections like Skills, Education, Portfolio, Stats, and Contact. Fully responsive and hosted on Firebase.",
-    githubLink: "https://github.com/midhunkalarikkal/MyPortfolio",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669283/FigmaSlotflow_pppnkj.jpg",
-    title: "Slotflow figma design",
-    techStack: [
-      "devicon-figma-plain colored"
-    ],
-    description: "I designed a complete Figma layout for an Appointment Booking Web Application, creating all pages from scratch with a strong focus on user experience and development-friendly structure. This is a new and exciting experience for me, and I’m also planning to implement an interactive prototype based on the wireframes.",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669284/NetflixRcgpt_ecgruu.jpg",
-    title: "Netflix Clone",
-    techStack: [
-      "devicon-react-original colored",
-      "devicon-tailwindcss-plain colored",
-      "devicon-jest-plain colored",
-      "devicon-firebase-plain colored",
-      "devicon-redux-plain colored",
-    ],
-    description: "I developed a fully responsive Netflix Clone using React, Tailwind CSS, Redux, and Firebase for authentication and hosting. It integrates the TMDB API for movie data and uses custom hooks for efficient category-based requests. To enhance UX, I implemented shimmer loading effects and seamless navigation. Firebase handles secure authentication with email verification and password reset. I also integrated a Gemini 1.5 Flash-powered recommendation system with rate limiting for personalized suggestions. This project deepened my React skills and is continuously evolving with new features for better performance and engagement.",
-    liveLink: "https://netflix-rcgpt.web.app",
-    githubLink: "https://github.com/midhunkalarikkal/nexflix-rcgpt",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669285/Youtuberc_emxbwn.jpg",
-    title: "Youtube Clone",
-    techStack: [
-      "devicon-react-original colored",
-      "devicon-tailwindcss-plain colored",
-      "devicon-firebase-plain colored",
-      "devicon-redux-plain colored",
-    ],
-    description: "I created a fully responsive YouTube Clone using React and YouTube APIs, making it one of my most refined and favorite projects. It features YouTube-style tiles, dynamic video pages with full details and comments, debounced search using the YouTube Search API, and real-time search suggestions. I also implemented a mocked live chat system, a single-level nested comment structure, light/dark theme toggling, custom hooks, and Redux for state management. The project is currently in the optimization and hosting phase to ensure smooth performance and scalability.",
-    liveLink: "https://clone-c9b9a.web.app/",
-    githubLink: "https://github.com/midhunkalarikkal/yt-clone",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669282/Olx1_fpuj59.jpg",
-    title: "OLX Crud Clone",
-    techStack: [
-      "devicon-react-original colored",
-      "devicon-tailwindcss-plain colored",
-      "devicon-nodejs-plain-wordmark colored",
-      "devicon-express-original",
-      "devicon-mongodb-plain colored",
-      "devicon-firebase-plain colored",
-      "devicon-redux-plain colored",
-    ],
-    techImageStack: [
-      { url: "/renderlogo.jpeg" },
-      { url: "/contextapilogo.png" },
-    ],
-    description: "I developed an OLX Clone using the MERN stack to reinforce full-stack development through core CRUD operations. The app features React.js with Context API for state management, Tailwind CSS for responsive styling, and Express.js with MongoDB and Node.js on the backend. Firebase handles authentication and hosting, while Cloudinary manages image uploads. Key features include user authentication, product listing CRUD, responsive UI, real-time notifications via React Hot Toast, and scalable architecture—delivering a smooth and engaging user experience.",
-    liveLink: "https://clone-c9b9a.web.app/",
-    frontendGithubLink: "https://github.com/midhunkalarikkal/olx-clone",
-    backendGithubLink: "https://github.com/midhunkalarikkal/olx_c_backend"
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669282/Craveroute1_ioir0y.jpg",
-    title: "Craveroute",
-    techStack: [
-      "devicon-react-original colored",
-      "devicon-tailwindcss-plain colored",
-      "devicon-nodejs-plain-wordmark colored",
-      "devicon-express-original",
-      "devicon-mongodb-plain colored",
-      "devicon-firebase-plain colored",
-      "devicon-redux-plain colored",
-    ],
-    techImageStack: [
-      { url: "/renderlogo.jpeg" },
-    ],
-    description: "CraveRoute is a sleek food delivery web application built from scratch using React, Redux, and Tailwind CSS. Designed as part of my learning journey, it helped me explore component-based architecture, responsive design, and state management. Though basic, with data stored in localStorage, it includes core features like restaurant listings, menu views, cart management, and a mock payment gateway. Inspired by real-world apps, CraveRoute highlights my growing proficiency in React and modern UI development.",
-    liveLink: "https://craveroute-food-order.web.app/",
-    frontendGithubLink: "https://github.com/midhunkalarikkal/React-f-d",
-    backendGithubLink: "https://github.com/midhunkalarikkal/CraveRoute-BE"
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669285/Porsche1_if8ivz.jpg",
-    title: "Porsche Landing Page",
-    techStack: [
-      "devicon-html5-plain colored",
-      "devicon-css3-plain colored",
-      "devicon-javascript-plain colored",
-      "devicon-Bootstrap-plain colored",
-    ],
-    description: "This is a fully animated, responsive static webpage built to showcase the elegance and innovation of Porsche. Crafted using JavaScript, Bootstrap, and CSS, it features smooth animations and dynamic interactions for an engaging user experience. Inspired by a one-direction animation, the project evolved into a full-fledged visual experience, demonstrating my creativity and front-end animation skills.",
-    liveLink: "https://midhunkalarikkal.github.io/porsche-landing/",
-    githubLink: "https://github.com/midhunkalarikkal/porsche-landing",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669282/Valorant_aptoo8.jpg",
-    title: "Valorant Fan Page",
-    techStack: [
-      "devicon-html5-plain colored",
-      "devicon-css3-plain colored",
-      "devicon-javascript-plain colored",
-      "devicon-bootstrap-plain colored",
-      "devicon-nodejs-plain-wordmark colored",
-      "devicon-express-original",
-      "devicon-mongodb-plain colored",
-    ],
-    techImageStack: [
-      { url: "/renderlogo.jpeg" },
-    ],
-    description: "As a lifelong gamer with a deep passion for Valorant, I created a dedicated tribute webpage using the Valorant npm package. Built as a Node.js application, it features login/logout functionality, user and admin panels, and admin-controlled user management. This project marked the start of my journey into Node.js development, blending my enthusiasm for gaming with practical coding experience. Developed during my transition from gaming to full-time coding at Brocamp, it reflects both my technical growth and personal inspiration.",
-    liveLink: "https://valorant-falj.onrender.com",
-    githubLink: "https://midhunkalarikkal.github.io/valorant/",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669285/FigmaLapshop_noyqek.jpg",
-    title: "Lapshop Figma Design",
-    techStack: [
-      "devicon-figma-plain colored",
-    ],
-    description: "I designed the LapShop e-commerce website using Figma, marking my first experience with the tool. This project helped me understand UI/UX fundamentals and allowed me to plan all pages efficiently while also guiding the database structure for seamless development.",
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747673516/NodeCrud1_rw9pdw.png",
-    title: "Node Crud",
-    techStack: [
-      "devicon-html5-plain colored",
-      "devicon-css3-plain colored",
-      "devicon-javascript-plain colored",
-      "devicon-bootstrap-plain colored",
-      "devicon-nodejs-plain-wordmark colored",
-      "devicon-express-original",
-      "devicon-mongodb-plain colored",
-    ],
-    techImageStack: [
-      { url: "/renderlogo.jpeg" },
-    ],
-    description: "🚀 A beginner-friendly project built to practice Node.js, EJS, sessions, cookies, and middleware. It features basic login/logout functionality along with full CRUD operations, laying the foundation for backend development skills.",
-    liveLink: "https://crud-app-jrb4.onrender.com",
-    githubLink: "https://github.com/midhunkalarikkal/sampleLoginLogout"
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669283/Flipkart_qx5c2j.jpg",
-    title: "Flipcart Homepage",
-    techStack: [
-      "devicon-html5-plain colored",
-      "devicon-css3-plain colored",
-      "devicon-javascript-plain colored",
-      "devicon-Bootstrap-plain colored",
-    ],
-    description: "I recreated Flipkart’s home page using HTML, CSS, Bootstrap, and JavaScript to strengthen my front-end skills. The project features a responsive layout with a sleek navbar, scrolling sections, product displays, and banners for an enhanced shopping experience. Bootstrap’s utility classes helped streamline the design, ensuring both functionality and visual appeal.",
-    liveLink: "https://midhunkalarikkal.github.io/flipkart_homepage/",
-    githubLink: "https://github.com/midhunkalarikkal/flipkart_homepage"
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747669282/Amazon_m3ayuy.jpg",
-    title: "Amazon Homepage",
-    techStack: [
-      "devicon-html5-plain colored",
-      "devicon-css3-plain colored",
-      "devicon-javascript-plain colored",
-    ],
-    description: "Building an Amazon-inspired webpage using HTML, CSS, and JavaScript was a valuable learning experience. The design includes an organized navbar, smooth scrolling sections, product showcases, and promotional banners—optimized for medium and larger screens to deliver a clean and engaging user experience.",
-    liveLink: "https://github.com/midhunkalarikkal/amazonhomepage",
-    githubLink: "https://midhunkalarikkal.github.io/amazonhomepage/"
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747673838/Instagram_dkg9od.jpg",
-    title: "Instagram Homepage",
-    techStack: [
-      "devicon-html5-plain colored",
-      "devicon-css3-plain colored",
-    ],
-    description: "Creating an Instagram-inspired webpage using HTML, CSS, and JavaScript was a great learning experience. The layout includes key frontend components: a left-side navigation panel, a central feed for scrolling posts, a right-side section for suggested accounts, and a story section—closely mimicking Instagram’s UI for a realistic and responsive design.",
-    liveLink: "https://midhunkalarikkal.github.io/instahomepage/",
-    githubLink: "https://github.com/midhunkalarikkal/instahomepage"
-  },
-  {
-    image: "https://res.cloudinary.com/dj8ma5m2t/image/upload/v1747674323/Netflix_tqkpxe.jpg",
-    title: "Netflix Homepage",
-    techStack: [
-      "devicon-html5-plain colored",
-      "devicon-css3-plain colored",
-    ],
-    description: "I created a Netflix-inspired homepage using HTML and CSS, utilizing Flexbox for a clean and responsive layout. The page features multiple scrolling sections with diverse content, a prominent movie banner highlighting a featured title, and a well-structured navigation bar for seamless browsing—delivering a visually engaging and user-friendly experience.",
-    liveLink: "https://midhunkalarikkal.github.io/Netflixhomepage/Index.html",
-    githubLink: "https://github.com/midhunkalarikkal/Netflixhomepage"
-  },
-];
+gsap.registerPlugin(ScrollTrigger);
 
-export const PortfolioPage = () => {
+export const PortfolioPage: React.FC = () => {
+
+  const headingRef = useRef(null);
+
+   useEffect(() => {
+    if (!headingRef.current) return;
+
+    gsap.set(headingRef.current, {
+      opacity: 0,
+      y: 90,
+    });
+    gsap.to(headingRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: headingRef.current,
+        start: "top 0%",
+        toggleActions: "play play play play",
+      },
+    });
+
+    ScrollTrigger.refresh();
+  }, []);
+
   return (
     <div className="text-white min-h-screen px-4 md:px-12 py-8">
-      <Heading title="Portfolio" smallTitle="Code & Creations" />
+      <div ref={headingRef}>
+        <Heading title="Portfolio" smallTitle="Code & Creations" />
+      </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {portfolioData.map((data, index) => (
-          <CardSpotlightHover
-            key={index}
-            image={data.image}
-            title={data.title}
-            techStack={data.techStack}
-            description={data.description}
-            techImageStack={data.techImageStack}
-            liveLink={data.liveLink}
-            githubLink={data.githubLink}
-            frontendGithubLink={data.frontendGithubLink}
-            backendGithubLink={data.backendGithubLink}
-            underDevelopment={data.underDevelopment}
-          />
+            <CardSpotlightHover
+              key={index}
+              image={data.image}
+              title={data.title}
+              techStack={data.techStack}
+              description={data.description}
+              techImageStack={data.techImageStack}
+              liveLink={data.liveLink}
+              githubLink={data.githubLink}
+              frontendGithubLink={data.frontendGithubLink}
+              backendGithubLink={data.backendGithubLink}
+              underDevelopment={data.underDevelopment}
+            />
         ))}
       </div>
     </div>

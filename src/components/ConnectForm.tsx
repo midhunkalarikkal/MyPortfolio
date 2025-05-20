@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState } from 'react';
 import { Send, X } from 'lucide-react';
 
-export const ConnectForm = () => {
+export const ConnectForm: React.FC = () => {
 
     const [inputValue, setInputValue] = useState<string>('');
     const [textAreaValue, setTextAreaValue] = useState<string>("")

@@ -1,7 +1,4 @@
-interface HeadingInterface {
-  title: string;
-  smallTitle?: string;
-}
+import { HeadingInterface } from "@/utils/interface"
 
 export const Heading: React.FC<HeadingInterface> = ({
   title,

@@ -101,12 +101,11 @@ export const HomePage: React.FC = () => {
             </div>
 
             {showContent && (
-                <div className="main w-full md:max-w-10/12 scale-[1.7]">
+                <div className="main w-full md:max-w-10/12 scale-[1.7] min-h-screen">
                     <div className="landing overflow-hidden relative w-full h-screen flex">
                         <div className="w-full h-screen flex justify-center items-center absolute">
                             <div className="w-full flex flex-col md:flex-row h-full">
 
-                                {/* my top image for small screens */}
                                 <div className="md:hidden flex items-end w-full h-1/2">
                                     <div
                                         id="into-image"
@@ -123,7 +122,6 @@ export const HomePage: React.FC = () => {
                                     </div>
                                 </div>
 
-                                {/* left side */}
                                 <div className="flex items-start mt-6 md:mt-0 md:items-center justify-center w-full md:w-1/2 h-1/2 md:h-full text-white">
                                     <div className="w-full text-center md:text-left px-2 md:px-0" ref={introTextDivRef}>
                                         <h1 className="text-3xl md:text-5xl font-['audiowide']"> Midhun K Paniker </h1>
@@ -143,27 +141,23 @@ export const HomePage: React.FC = () => {
                                     </div>
                                 </div>
 
-
-                                {/* right side */}
                                 <div className="hidden md:flex justify-center items-center w-1/2 h-full">
-                                        <div
-                                            id="into-image"
-                                            className="w-full h-auto"
-                                            ref={midhunIntroImageRef}
-                                        >
-                                            <Image
-                                                src="/midhunIntro.png"
-                                                alt="Image"
-                                                className="w-full h-full"
-                                                width={1000}
-                                                height={1000}
-                                            />
-                                        </div>
+                                    <div
+                                        id="into-image"
+                                        className="w-full h-auto"
+                                        ref={midhunIntroImageRef}
+                                    >
+                                        <Image
+                                            src="/midhunIntro.png"
+                                            alt="Image"
+                                            className="w-full h-full"
+                                            width={1000}
+                                            height={1000}
+                                        />
+                                    </div>
                                 </div>
-
                             </div>
                         </div>
-
                     </div>
                 </div>
             )}

@@ -1,14 +1,46 @@
 "use client";
 
-import React from "react";
+import gsap from "gsap";
 import Image from "next/image";
 import { Heading } from "@/components/Heading";
+import React, { useEffect, useRef } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export function SkillsPage() {
+gsap.registerPlugin(ScrollTrigger);
+
+export const SkillsPage: React.FC = () => {
+  const headingRef = useRef(null);
+
+  useEffect(() => {
+    if (!headingRef.current) return;
+
+    gsap.set(headingRef.current, {
+      opacity: 0,
+      y: 90,
+    });
+    gsap.to(headingRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: headingRef.current,
+        start: "top 0%",
+        toggleActions: "play play play play",
+      },
+    });
+
+    ScrollTrigger.refresh();
+  }, []);
+
+
   return (
+    <div className="text-white pt-10 pb-4 md:pt-4 md:pb-4 w-full md:max-w-10/12 min-h-screen">
 
-    <div className="text-white antialiased pt-1 pb-4 md:pt-4 md:pb-4 relative w-full md:max-w-10/12">
-      <Heading title="Skills" smallTitle="Stack Mastery"/>
+      <div ref={headingRef}>
+        <Heading title="Skills" smallTitle="Tools and Languages" />
+      </div>
+
       {skillsContent.map((item, index) => (
         <div key={`content-${index}`} className="mb-10">
           <p className="text- md:text-xl mb-4">{item.title}</p>
@@ -27,7 +59,7 @@ export function SkillsPage() {
 // Interface for Skill Item
 interface SkillItem {
   label: string;
-  image: React.ReactNode; // Changed to React.ReactNode
+  image: React.ReactNode;
 }
 
 const languages: SkillItem[] = [
@@ -87,10 +119,10 @@ const concepts: SkillItem[] = [
   { label: 'SOLID Principles', image: <Image src="/solidprincipleslogo.png" alt="solidprinciples" width={1000} height={1000} className="w-4 h-4" /> },
 ];
 
-const pursuing: SkillItem[] = [
-  { label: 'Microservices', image: <Image src="/microservicelogo.png" alt="microservice" width={1000} height={1000} className="w-4 h-4 invert" /> },
-  { label: 'WebRTC', image: <Image src="/webrtclogo.png" alt="webrtc" width={1000} height={1000} className="w-4 h-4" /> },
-];
+// const pursuing: SkillItem[] = [
+//   { label: 'Microservices', image: <Image src="/microservicelogo.png" alt="microservice" width={1000} height={1000} className="w-4 h-4 invert" /> },
+//   { label: 'WebRTC', image: <Image src="/webrtclogo.png" alt="webrtc" width={1000} height={1000} className="w-4 h-4" /> },
+// ];
 
 const skillsContent = [
   {
@@ -171,17 +203,17 @@ const skillsContent = [
       </ul>
     ),
   },
-  {
-    title: "Currently Pursuing",
-    description: (
-      <ul className="flex flex-wrap gap-4">
-        {pursuing.map((item) => (
-          <li key={item.label} className="flex items-center">
-            {item.image}
-            <span className="ml-2">{item.label}</span>
-          </li>
-        ))}
-      </ul>
-    ),
-  }
+  // {
+  //   title: "Currently Pursuing",
+  //   description: (
+  //     <ul className="flex flex-wrap gap-4">
+  //       {pursuing.map((item) => (
+  //         <li key={item.label} className="flex items-center">
+  //           {item.image}
+  //           <span className="ml-2">{item.label}</span>
+  //         </li>
+  //       ))}
+  //     </ul>
+  //   ),
+  // }
 ];

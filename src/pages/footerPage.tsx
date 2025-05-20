@@ -1,7 +1,7 @@
 import React from 'react';
 import { LogoLinks } from '@/components/logoLinks';
 
-export const FooterPage = () => {
+export const FooterPage: React.FC = () => {
     return (
         <div className="h-auto py-6 text-white text-center">
             <LogoLinks className="social-links flex gap-6 text-2xl justify-center mb-3" />
