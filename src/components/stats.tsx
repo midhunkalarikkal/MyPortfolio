@@ -14,10 +14,10 @@ export const Stats: React.FC<StatsComponent> = ({
 
   useEffect(() => {
     const fetchedData = url
-    if(fetchedData)
+    if (fetchedData)
       setIframeUrl(fetchedData);
-      setLoading(false);
-  }, []);
+    setLoading(false);
+  }, [url]);
 
   return (
     <div className="md:my-2 p-2 md:p-4">
