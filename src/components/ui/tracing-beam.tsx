@@ -23,9 +23,9 @@ export const TracingBeam = ({
   if (screenSize === "sm") {
     return `M 1 0 V 
                 -36 l 18 24 V 
-                ${svgHeight * 0.37} 
+                ${svgHeight * 0.13} 
                 l -10 24 V 
-                ${svgHeight * 0.62} 
+                ${svgHeight * 0.23} 
                 l 10 24 V 
                 ${svgHeight} 
                 `;
@@ -41,9 +41,9 @@ export const TracingBeam = ({
   } else {
     return `M 1 0 V 
                 -36 l 18 24 V 
-                ${svgHeight * 0.21} 
+                ${svgHeight * 0.18} 
                 l -18 24 V 
-                ${svgHeight * 0.33} 
+                ${svgHeight * 0.31} 
                 l 18 24 V 
                 ${svgHeight} 
                 `;
@@ -131,7 +131,7 @@ export const TracingBeam = ({
 
           <svg
             viewBox={`10 0 20 ${svgHeight}`}
-            width="auto"
+            width="100"
             height={svgHeight}
             className="block mt-2"
             aria-hidden="true"

@@ -1,5 +1,5 @@
 import { Power3 } from "gsap";
-import { CardSpotlightHoverInterface, EducationTimelineItem } from "./interface";
+import { CardSpotlightHoverInterface, EducationTimelineItem, SkillItem } from "./interface";
 
 // Home page designation strings
 export const designationArray: string[] = [
@@ -71,6 +71,71 @@ export const getGsapHeadingAnimation = (targetRef: Element | null) => ({
     toggleActions: "play reverse play reverse", // repeatable animation
   },
 });
+
+
+
+
+
+// **** Skiils Page Data **** \\
+export const languages: SkillItem[] = [
+  { label: "JavaScript", isIcon: true, value: "devicon-javascript-plain colored" },
+  { label: "TypeScript", isIcon: true, value: "devicon-typescript-plain colored" },
+  { label: "MongoDB", isIcon: true, value: "devicon-mongodb-plain colored" },
+  { label: "C", isIcon: true, value: "devicon-c-plain colored" },
+  { label: "PostgreSQL", isIcon: true, value: "devicon-postgresql-plain colored" },
+  { label: "HTML5", isIcon: true, value: "devicon-html5-plain colored" },
+  { label: "(S)CSS", isIcon: true, value: "devicon-css3-plain colored" },
+];
+
+export const libraries: SkillItem[] = [
+  { label: "Node.js", isIcon: true, value: "devicon-nodejs-plain-wordmark colored" },
+  { label: "Express", isIcon: true, value: "devicon-express-original" },
+  { label: "React JS", isIcon: true, value: "devicon-react-original colored" },
+  { label: "Next JS", isIcon: true, value: "devicon-nextjs-plain" },
+  { label: "Tailwind", isIcon: true, value: "devicon-tailwindcss-plain colored" },
+  { label: "Bootstrap", isIcon: true, value: "devicon-bootstrap-plain colored" },
+  { label: "MUI", isIcon: true, value: "devicon-materialui-plain colored" },
+  { label: "Socket.io", isIcon: true, value: "/socketiologo.png" },
+  { label: "GSAP", isIcon: true, value: "/gsaplogo.png" },
+];
+
+export const tools: SkillItem[] = [
+  { label: "Git", isIcon: true, value: "devicon-git-plain colored" },
+  { label: "Postman", isIcon: true, value: "devicon-postman-plain colored" },
+  { label: "Jest", isIcon: true, value: "devicon-jest-plain colored" },
+  { label: "Render", isIcon: false, value: "/renderlogo.jpeg" },
+  { label: "Vercel", isIcon: true, value: "devicon-vercel-original" },
+  { label: "AWS", isIcon: true, value: "devicon-amazonwebservices-plain colored" },
+  { label: "Firebase", isIcon: true, value: "devicon-firebase-plain colored" },
+  { label: "Redis", isIcon: true, value: "devicon-redis-plain-wordmark" },
+  { label: "EJS", isIcon: false, value: "/ejslogo.png", invert: true },
+  { label: "Cloudinary", isIcon: false, value: "/cloudinarylogo.png" },
+  { label: "Razorpay", isIcon: false, value: "/razorpaylogo.jpeg" },
+  { label: "Stripe", isIcon: false, value: "/stripelogo.png" },
+  { label: "Paypal", isIcon: false, value: "/paypallogo.png" },
+];
+
+
+export const designTools: SkillItem[] = [
+  { label: "Figma", isIcon: true, value: "devicon-figma-plain colored" },
+  { label: "CodePlanner", isIcon: false, value: "/codeplannerlogo.png" },
+  { label: "Photoshop", isIcon: true, value: "devicon-photoshop-plain" },
+];
+
+
+export const stateManagement: SkillItem[] = [
+  { label: "Context API", isIcon: false, value: "/contextapilogo.png" },
+  { label: "Redux", isIcon: true, value: "devicon-redux-plain colored" },
+  { label: "Zustand", isIcon: false, value: "/zustandlogo.png" },
+];
+
+
+export const concepts: SkillItem[] = [
+  { label: "MVC Architecture", isIcon: false, value: "/mvcarchitecturelogo.png" },
+  { label: "CLEAN Architecture", isIcon: false, value: "/cleanarchitecturelogo.png" },
+  { label: "Waterfall Model", isIcon: false, value: "/waterfallmodellogo.png", invert: true },
+  { label: "SOLID Principles", isIcon: false, value: "/solidprincipleslogo.png" },
+];
 
 
 

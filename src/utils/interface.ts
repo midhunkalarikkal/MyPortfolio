@@ -73,3 +73,11 @@ export interface ConnectButtonInterface {
     openConnectForm?: () => void;
     lgForm: boolean;
 }
+
+// **** Skills Page Data Interface **** \\
+export interface SkillItem {
+  label: string;
+  isIcon: boolean;
+  value: string;
+  invert?: boolean;
+}

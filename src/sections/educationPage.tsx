@@ -9,7 +9,10 @@ import { EducationTimelineItem } from "@/utils/interface";
 import { educationTimelineData } from "@/utils/constants";
 
 export const EducationPage: React.FC = () => {
+
   const headingRef = useRef<HTMLDivElement | null>(null);
+  const contentRefs = useRef<HTMLDivElement[]>([]);
+  contentRefs.current = [];
 
   useEffect(() => {
     if (!headingRef.current) return;
@@ -29,14 +32,31 @@ export const EducationPage: React.FC = () => {
         toggleActions: "play play play play",
       },
     });
-    
+
+    contentRefs.current.forEach((el) => {
+      gsap.set(el, { opacity: 0, y: 90 });
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 0%",
+          toggleActions: "play play play play",
+        },
+      });
+    });
+
     ScrollTrigger.refresh();
   }, []);
 
-  const formattedData = educationTimelineData.map((item: EducationTimelineItem) => ({
+  const formattedData = educationTimelineData.map((item: EducationTimelineItem, index) => ({
     title: item.title,
     content: (
-      <div>
+      <div ref={(el) => {
+        if (el) contentRefs.current[index] = el;
+      }}>
         <h1 className="text-white text-xl md:text-3xl font-bold">
           {item.heading}
         </h1>

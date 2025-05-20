@@ -2,14 +2,18 @@
 
 import gsap from "gsap";
 import Image from "next/image";
+import { SkillItem } from "@/utils/interface";
 import { Heading } from "@/components/Heading";
 import React, { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { concepts, designTools, languages, libraries, stateManagement, tools } from "@/utils/constants";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const SkillsPage: React.FC = () => {
-  const headingRef = useRef(null);
+  const headingRef = useRef<HTMLDivElement | null>(null);
+  const contentRefs = useRef<HTMLDivElement[]>([]);
+  contentRefs.current = [];
 
   useEffect(() => {
     if (!headingRef.current) return;
@@ -30,6 +34,21 @@ export const SkillsPage: React.FC = () => {
       },
     });
 
+    contentRefs.current.forEach((el) => {
+    gsap.set(el, { opacity: 0, y: 90 });
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 2,
+      ease: "power2.out",
+      scrollTrigger: {
+        trigger: el,
+        start: "top 0%",
+        toggleActions: "play play play play",
+      },
+    });
+  });
+
     ScrollTrigger.refresh();
   }, []);
 
@@ -42,7 +61,9 @@ export const SkillsPage: React.FC = () => {
       </div>
 
       {skillsContent.map((item, index) => (
-        <div key={`content-${index}`} className="mb-10">
+        <div key={`content-${index}`} className="mb-10" ref={(el) => {
+          if (el) contentRefs.current[index] = el;
+        }} >
           <p className="text- md:text-xl mb-4">{item.title}</p>
           <div className="">
             {item.description}
@@ -54,166 +75,35 @@ export const SkillsPage: React.FC = () => {
   );
 }
 
-
-
-// Interface for Skill Item
-interface SkillItem {
-  label: string;
-  image: React.ReactNode;
-}
-
-const languages: SkillItem[] = [
-  { label: "JavaScript", image: <i className="devicon-javascript-plain colored"></i> },
-  { label: "TypeScript", image: <i className="devicon-typescript-plain colored"></i> },
-  { label: "MongoDB", image: <i className="devicon-mongodb-plain colored"></i> },
-  { label: "C", image: <i className="devicon-c-plain colored"></i> },
-  { label: "PostgreSQL", image: <i className="devicon-postgresql-plain colored"></i> },
-  { label: "HTML5", image: <i className="devicon-html5-plain colored"></i> },
-  { label: "(S)CSS", image: <i className="devicon-css3-plain colored"></i> },
-];
-
-const libraries: SkillItem[] = [
-  { label: "Node.js", image: <i className="devicon-nodejs-plain-wordmark colored"></i> },
-  { label: "Express", image: <i className="devicon-express-original"></i> },
-  { label: "React JS", image: <i className="devicon-react-original colored"></i> },
-  { label: "Next JS", image: <i className="devicon-nextjs-plain"></i> },
-  { label: "Tailwind", image: <i className="devicon-tailwindcss-plain colored"></i> },
-  { label: "Bootstrap", image: <i className="devicon-bootstrap-plain colored"></i> },
-  { label: "MUI", image: <i className="devicon-materialui-plain colored"></i> },
-  { label: 'Socket.io', image: <Image src="/socketiologo.png" alt="socketio" width={1000} height={1000} className="w-4 h-4" /> },
-  { label: 'GSAP', image: <Image src="/gsaplogo.png" alt="socketio" width={1000} height={1000} className="w-4 h-4" /> },
-];
-
-const tools: SkillItem[] = [
-  { label: "Git", image: <i className="devicon-git-plain colored"></i> },
-  { label: "Postman", image: <i className="devicon-postman-plain colored"></i> },
-  { label: "Jest", image: <i className="devicon-jest-plain colored"></i> },
-  { label: "Render", image: <Image src="/renderlogo.jpeg" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
-  { label: "Vercel", image: <i className="devicon-vercel-original"></i> },
-  { label: "AWS", image: <i className="devicon-amazonwebservices-plain colored"></i> },
-  { label: "Firebase", image: <i className="devicon-firebase-plain colored"></i> },
-  { label: "Redis", image: <i className="devicon-redis-plain-wordmark"></i> },
-  { label: "EJS", image: <Image src="/ejslogo.png" alt="render" width={1000} height={1000} className="w-4 h-4 invert" /> },
-  { label: "Cloudinary", image: <Image src="/cloudinarylogo.png" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
-  { label: "Razorpay", image: <Image src="/razorpaylogo.jpeg" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
-  { label: "Stripe", image: <Image src="/stripelogo.png" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
-  { label: "Paypal", image: <Image src="/paypallogo.png" alt="render" width={1000} height={1000} className="w-4 h-4" /> },
-];
-
-const designTools: SkillItem[] = [
-  { label: 'Figma', image: <i className="devicon-figma-plain colored"></i> },
-  { label: '', image: <span>Code<span className="text-[#4f46e5]">Planner</span></span> },
-  { label: 'Photoshop', image: <i className="devicon-photoshop-plain"></i> },
-];
-
-const stateManagement: SkillItem[] = [
-  { label: 'Context API', image: <Image src="/contextapilogo.png" alt="contextapi" width={1000} height={1000} className="w-4 h-4" /> },
-  { label: 'Redux', image: <i className="devicon-redux-plain colored"></i> },
-  { label: 'Zustand', image: <Image src="/zustandlogo.png" alt="zustand" width={1000} height={1000} className="w-4 h-4" /> },
-];
-
-const concepts: SkillItem[] = [
-  { label: 'MVC Architecture', image: <Image src="/mvcarchitecturelogo.png" alt="mvcarchitecture" width={1000} height={1000} className="w-4 h-4" /> },
-  { label: 'CLEAN Architecture', image: <Image src="/cleanarchitecturelogo.png" alt="mvcarchitecture" width={1000} height={1000} className="w-4 h-4" /> },
-  { label: 'Waterfall Model', image: <Image src="/waterfallmodellogo.png" alt="waterfallmodel" width={1000} height={1000} className="w-4 h-4 invert" /> },
-  { label: 'SOLID Principles', image: <Image src="/solidprincipleslogo.png" alt="solidprinciples" width={1000} height={1000} className="w-4 h-4" /> },
-];
-
-// const pursuing: SkillItem[] = [
-//   { label: 'Microservices', image: <Image src="/microservicelogo.png" alt="microservice" width={1000} height={1000} className="w-4 h-4 invert" /> },
-//   { label: 'WebRTC', image: <Image src="/webrtclogo.png" alt="webrtc" width={1000} height={1000} className="w-4 h-4" /> },
-// ];
+const SkillList = ({ items }: { items: SkillItem[] }) => (
+  <ul className="flex flex-wrap gap-4">
+    {items.map((item) => (
+      <li key={item.label} className="flex items-center">
+        {item.isIcon ? (
+          <i className={item.value}></i>
+        ) : (
+          <Image
+            src={item.value}
+            alt={item.label}
+            width={1000}
+            height={1000}
+            className="w-4 h-4"
+          />
+        )}
+        <span className="ml-2 text-sm md:text-lg">{item.label}</span>
+      </li>
+    ))}
+  </ul>
+);
 
 const skillsContent = [
-  {
-    title: "Languages",
-    description: (
-      <ul className="flex flex-wrap gap-4">
-        {languages.map((lang) => (
-          <li key={lang.label} className="flex items-center">
-            {lang.image}
-            <span className="ml-2 text-sm md:text-lg">{lang.label}</span>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-  {
-    title: "Libraries & Frameworks",
-    description: (
-      <ul className="flex flex-wrap gap-4">
-        {libraries.map((lib) => (
-          <li key={lib.label} className="flex items-center">
-            {lib.image}
-            <span className="ml-2">{lib.label}</span>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-  {
-    title: "Tools & Platforms",
-    description: (
-      <ul className="flex flex-wrap gap-4">
-        {tools.map((tool) => (
-          <li key={tool.label} className="flex items-center">
-            {tool.image}
-            <span className="ml-2">{tool.label}</span>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-  {
-    title: "Design & Prototyping",
-    description: (
-      <ul className="flex flex-wrap gap-4">
-        {designTools.map((tool) => (
-          <li key={tool.label} className="flex items-center">
-            {tool.image}
-            <span className="ml-2">{tool.label}</span>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-  {
-    title: "State Management & Architecture",
-    description: (
-      <ul className="flex flex-wrap gap-4">
-        {stateManagement.map((state) => (
-          <li key={state.label} className="flex items-center">
-            {state.image}
-            <span className="ml-2">{state.label}</span>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-  {
-    title: "Concepts & Models",
-    description: (
-      <ul className="flex flex-wrap gap-4">
-        {concepts.map((concept) => (
-          <li key={concept.label} className="flex items-center">
-            {concept.image}
-            <span className="ml-2">{concept.label}</span>
-          </li>
-        ))}
-      </ul>
-    ),
-  },
-  // {
-  //   title: "Currently Pursuing",
-  //   description: (
-  //     <ul className="flex flex-wrap gap-4">
-  //       {pursuing.map((item) => (
-  //         <li key={item.label} className="flex items-center">
-  //           {item.image}
-  //           <span className="ml-2">{item.label}</span>
-  //         </li>
-  //       ))}
-  //     </ul>
-  //   ),
-  // }
-];
+  { title: "Languages", items: languages },
+  { title: "Libraries & Frameworks", items: libraries },
+  { title: "Tools & Platforms", items: tools },
+  { title: "Design & Prototyping", items: designTools },
+  { title: "State Management & Architecture", items: stateManagement },
+  { title: "Concepts & Models", items: concepts },
+].map((section) => ({
+  title: section.title,
+  description: <SkillList items={section.items} />,
+}));

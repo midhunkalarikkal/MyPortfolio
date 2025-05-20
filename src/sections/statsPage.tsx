@@ -9,22 +9,22 @@ import { gihubStatsUrl, githubContributionTilesLink, leetcodeStatsLink } from "@
 
 export const StatsPage: React.FC = () => {
 
-  const headingRef = useRef(null);
+  const componentRef = useRef(null);
 
   useEffect(() => {
-    if (!headingRef.current) return;
+    if (!componentRef.current) return;
 
-    gsap.set(headingRef.current, {
+    gsap.set(componentRef.current, {
       opacity: 0,
       y: 90,
     });
-    gsap.to(headingRef.current, {
+    gsap.to(componentRef.current, {
       opacity: 1,
       y: 0,
       duration: 2,
       ease: "power2.out",
       scrollTrigger: {
-        trigger: headingRef.current,
+        trigger: componentRef.current,
         start: "top 0%",
         toggleActions: "play play play play",
       },
@@ -35,12 +35,18 @@ export const StatsPage: React.FC = () => {
 
   return (
     <div className="w-full md:max-w-10/12 pb-14">
-      <div ref={headingRef}>
+      <div ref={componentRef}>
         <Heading title="Stats" smallTitle="Github & Leetcode" />
       </div>
-      <Stats url={gihubStatsUrl} height={200} />
-      <Stats url={githubContributionTilesLink} height={"auto"} />
-      <Stats url={leetcodeStatsLink} height={200} />
+      <div ref={componentRef}>
+        <Stats url={gihubStatsUrl} height={200} />
+      </div>
+      <div ref={componentRef}>
+        <Stats url={githubContributionTilesLink} height={"auto"} />
+      </div>
+      <div ref={componentRef}>
+        <Stats url={leetcodeStatsLink} height={200} />
+      </div>
     </div>
   );
 };

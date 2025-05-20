@@ -3,17 +3,19 @@
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { Heading } from "@/components/Heading";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { portfolioData } from "@/utils/constants";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CardSpotlightHover } from "@/components/CardSpotlightDemo";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const PortfolioPage: React.FC = () => {
 
-  const headingRef = useRef(null);
+  const headingRef = useRef<HTMLDivElement | null>(null);
+  const contentRefs = useRef<HTMLDivElement[]>([]);
+  contentRefs.current = [];
 
-   useEffect(() => {
+  useEffect(() => {
     if (!headingRef.current) return;
 
     gsap.set(headingRef.current, {
@@ -32,6 +34,21 @@ export const PortfolioPage: React.FC = () => {
       },
     });
 
+    contentRefs.current.forEach((el) => {
+      gsap.set(el, { opacity: 0, y: 90 });
+      gsap.to(el, {
+        opacity: 1,
+        y: 0,
+        duration: 2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: el,
+          start: "top 0%",
+          toggleActions: "play play play play",
+        },
+      });
+    });
+
     ScrollTrigger.refresh();
   }, []);
 
@@ -43,8 +60,10 @@ export const PortfolioPage: React.FC = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {portfolioData.map((data, index) => (
+          <div key={index} ref={(el) => {
+            if (el) contentRefs.current[index] = el;
+          }}>
             <CardSpotlightHover
-              key={index}
               image={data.image}
               title={data.title}
               techStack={data.techStack}
@@ -56,6 +75,7 @@ export const PortfolioPage: React.FC = () => {
               backendGithubLink={data.backendGithubLink}
               underDevelopment={data.underDevelopment}
             />
+          </div>
         ))}
       </div>
     </div>
