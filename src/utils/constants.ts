@@ -8,11 +8,6 @@ export const designationArray: string[] = [
     "Software Engineer",
 ]
 
-// Home page navlinks
-export const navLinks: string[] = [
-    "Home", "About", "Resume", "Skills", "Portfolio", "Contact"
-]
-
 
 
 

@@ -1,12 +1,11 @@
 "use client";
 
 import gsap from "gsap";
-import Link from "next/link";
 import Image from "next/image";
 import { useGSAP } from "@gsap/react";
 import { LogoLinks } from "@/components/logoLinks";
 import { useEffect, useRef, useState } from "react";
-import { designationArray, gsapFromHomePageMainObject, gsapSetHomePageMainObject, gsapToMainObject, gsapToNameMaskGroupFirstObject, gsapToNameMaskGroupSecondObject, navLinks } from "@/utils/constants";
+import { designationArray, gsapFromHomePageMainObject, gsapSetHomePageMainObject, gsapToMainObject, gsapToNameMaskGroupFirstObject, gsapToNameMaskGroupSecondObject } from "@/utils/constants";
 
 export const HomePage: React.FC = () => {
 
@@ -129,15 +128,16 @@ export const HomePage: React.FC = () => {
                                             {"I'm a passionate"}{" "}
                                             <span className="font-['audiowide'] text-[#18d26e] text-lg md:text-2xl">{designation}</span> from Kerala
                                         </h2>
-
-                                        <nav id="navbar" className="mt-4">
-                                            <ul className="hidden md:flex md:justify-start md:gap-4 text-md">
-                                                {navLinks.map((link, index) => (
-                                                    <li key={index}><Link className="nav-link" href="#header">{link}</Link></li>
-                                                ))}
-                                            </ul>
-                                        </nav>
-                                        <LogoLinks className="justify-center md:justify-start gap-5"/>
+                                        <LogoLinks className="justify-center md:justify-start gap-5" />
+                                        <a
+                                            href="https://drive.google.com/file/d/1Kz9U3d2bdF2bjwz5ZT5EIgYMExiVyp__/view?usp=sharing"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <button className="text-sm md:text-[17px] border-2 border-green-400 px-4 py-1 md:py-2 rounded-lg mt-4 hover:bg-green-400 hover:text-black cursor-pointer">
+                                                Download Resume
+                                            </button>
+                                        </a>
                                     </div>
                                 </div>
 
@@ -159,7 +159,7 @@ export const HomePage: React.FC = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div >
             )}
         </>
     );
