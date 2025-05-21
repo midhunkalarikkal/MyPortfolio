@@ -27,6 +27,10 @@ export const TracingBeam = ({
                 l -10 24 V 
                 ${svgHeight * 0.23} 
                 l 10 24 V 
+                 ${svgHeight * 0.86} 
+                l -10 24 V 
+                ${svgHeight * 0.92} 
+                l 10 24 V 
                 ${svgHeight} 
                 `;
   } else if (screenSize === "md") {
@@ -44,6 +48,10 @@ export const TracingBeam = ({
                 ${svgHeight * 0.18} 
                 l -18 24 V 
                 ${svgHeight * 0.31} 
+                l 18 24 V 
+                ${svgHeight * 0.69} 
+                l -18 24 V 
+                ${svgHeight * 0.78} 
                 l 18 24 V 
                 ${svgHeight} 
                 `;
@@ -91,7 +99,7 @@ export const TracingBeam = ({
     };
   }, []);
 
-  const y1 = useSpring(useTransform(scrollYProgress, [0, 0.9], [50, svgHeight]), {
+  const y1 = useSpring(useTransform(scrollYProgress, [0, 0.8], [50, svgHeight]), {
     stiffness: 500,
     damping: 90,
   });
