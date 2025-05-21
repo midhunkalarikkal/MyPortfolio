@@ -95,8 +95,8 @@ export const libraries: SkillItem[] = [
   { label: "Tailwind", isIcon: true, value: "devicon-tailwindcss-plain colored" },
   { label: "Bootstrap", isIcon: true, value: "devicon-bootstrap-plain colored" },
   { label: "MUI", isIcon: true, value: "devicon-materialui-plain colored" },
-  { label: "Socket.io", isIcon: true, value: "/socketiologo.png" },
-  { label: "GSAP", isIcon: true, value: "/gsaplogo.png" },
+  { label: "Socket.io", isIcon: false, value: "/socketiologo.png" },
+  { label: "GSAP", isIcon: false, value: "/gsaplogo.png" },
 ];
 
 export const tools: SkillItem[] = [

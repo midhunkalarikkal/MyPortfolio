@@ -54,7 +54,7 @@ export const SkillsPage: React.FC = () => {
 
 
   return (
-    <div className="text-white pt-10 pb-4 md:pt-4 md:pb-4 w-full md:max-w-10/12 min-h-screen">
+    <div className="text-white pt-10 pb-4 md:pt-4 md:pb-4 w-full md:max-w-10/12 min-h-screen pr-5 md:pr-0">
 
       <div ref={headingRef}>
         <Heading title="Skills" smallTitle="Tools and Languages" />
@@ -87,7 +87,7 @@ const SkillList = ({ items }: { items: SkillItem[] }) => (
             alt={item.label}
             width={1000}
             height={1000}
-            className="w-4 h-4"
+            className={`w-4 h-4 ${ item.invert && "invert" }`}
           />
         )}
         <span className="ml-2 text-sm md:text-lg">{item.label}</span>

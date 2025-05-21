@@ -101,7 +101,7 @@ export const HomePage: React.FC = () => {
             </div>
 
             {showContent && (
-                <div className="main w-full md:max-w-10/12 scale-[1.7] min-h-screen">
+                <div className="main w-full pr-5 md:pr-0 md:max-w-10/12 scale-[1.7] min-h-screen">
                     <div className="landing overflow-hidden relative w-full h-screen flex">
                         <div className="w-full h-screen flex justify-center items-center absolute">
                             <div className="w-full flex flex-col md:flex-row h-full">

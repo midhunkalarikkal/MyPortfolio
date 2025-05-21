@@ -60,7 +60,7 @@ export const EducationPage: React.FC = () => {
         <h1 className="text-white text-xl md:text-3xl font-bold">
           {item.heading}
         </h1>
-        <p className="mb-8 text-sm md:text-lg font-normal text-neutral-200 text-justify">
+        <p className="mb-8 text-sm md:text-lg font-normal text-neutral-200 text-justify pr-5 md:pr-0">
           {item.description.split(item.highlight).map((part, i, arr) =>
             i < arr.length - 1 ? (
               <span key={i}>
